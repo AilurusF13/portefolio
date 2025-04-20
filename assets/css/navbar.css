@@ -1,0 +1,74 @@
+@import url("style.css");
+
+:root{
+    --text-action: white ;
+    --nav-background: #252228 ;
+    --text-colour: white ;
+    --font-size-phone: 12px ;
+    --nav-size-phone:60px
+}
+
+.main_navbar{
+
+    background-color: var(--nav-background);
+
+    display: flex;
+    align-items: center;
+    height: var(--nav-size-phone);
+
+    font-size: var(--font-size-phone);
+    font-weight: bold;
+    text-transform: uppercase;
+
+    > :first-child{
+        flex: 0 1 auto ;
+        a .logo{
+            height:  calc(var(--nav-size-phone));
+            width: auto;
+        }
+    }
+    > :last-child{
+        flex: 1 ;
+        display: flex;
+        align-items: center;
+    }
+
+    menu{
+        padding: 0;
+        flex: 1 ;
+
+        list-style: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        li{
+            a{
+                text-decoration: none;
+                color: var(--text-action) ;
+                &:visited, &:active {
+                    color:var(--text-action) ;
+                }
+            }
+
+            form {
+
+                select {
+                    background-color: var(--nav-background);
+                    color: var(--text-action);
+                    border: 0;
+                    font-size: var(--font-size-phone);
+                    text-transform: uppercase;
+                    font-weight: bold;
+
+                    option {
+                        color: var(--text-action);
+                        background-color: var(--nav-background);
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+}
