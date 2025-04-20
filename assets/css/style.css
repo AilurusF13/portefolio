@@ -4,6 +4,16 @@
          url('/assets/fonts/Roboto_Condensed/RobotoCondensed-Italic-VariableFont_wght.ttf') format('ttf') ;
 }
 
+:root{
+    --primary: #252228 ;
+    --secondary: black;
+
+    --text-action: var(--primary) ;
+    --text-colour: var(--secondary) ;
+
+    --background: var(--primary) ;
+}
+
 html {
     scroll-behavior: smooth;
     font-family: "Roboto Condensed", sans-serif;
@@ -15,4 +25,12 @@ svg text {
 
 body{
     margin: 0;
+}
+
+a{
+    /*text-decoration: none;*/
+    color: var(--text-action) ;
+    &:visited, &:active {
+        color:var(--text-action) ;
+    }
 }

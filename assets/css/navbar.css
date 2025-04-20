@@ -1,27 +1,25 @@
 @import url("style.css");
 
-:root{
-    --text-action: white ;
-    --nav-background: #252228 ;
-    --text-colour: white ;
-    --font-size-phone: 12px ;
-    --nav-size-phone:60px
-}
-
 .main_navbar{
 
-    background-color: var(--nav-background);
+    --nav-font-size-phone: 12px ;
+    --nav-size-phone:60px ;
+    --text-action: white ;
+    --text-colour: white ;
+
+    background-color: var(--background);
 
     display: flex;
     align-items: center;
     height: var(--nav-size-phone);
 
-    font-size: var(--font-size-phone);
+    font-size: var(--nav-font-size-phone);
     font-weight: bold;
     text-transform: uppercase;
 
     > :first-child{
         flex: 0 1 auto ;
+        padding-left: 5%;
         a .logo{
             height:  calc(var(--nav-size-phone));
             width: auto;
@@ -55,16 +53,16 @@
             form {
 
                 select {
-                    background-color: var(--nav-background);
+                    background-color: var(--background);
                     color: var(--text-action);
                     border: 0;
-                    font-size: var(--font-size-phone);
+                    font-size: var(--nav-font-size-phone);
                     text-transform: uppercase;
                     font-weight: bold;
 
                     option {
                         color: var(--text-action);
-                        background-color: var(--nav-background);
+                        background-color: var(--background);
                         text-transform: uppercase;
                     }
                 }
