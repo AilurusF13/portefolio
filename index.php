@@ -15,10 +15,14 @@ $myName = "Ailurus" ;
 
 <body>
 <?php
-include_once "assets/php/navbar.php"; /*Barre de navigation*/
+include_once "assets/php/header.php"; /*Head bar*/
 ?>
 
 <section id="showcase-section">
+    <aside id="about-me">
+
+    </aside>
+
 </section>
 
 <section id="more-section">

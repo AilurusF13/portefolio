@@ -16,7 +16,6 @@
 
 html {
     scroll-behavior: smooth;
-    font-family: "Roboto Condensed", sans-serif;
 }
 
 svg text {
@@ -25,6 +24,7 @@ svg text {
 
 body{
     margin: 0;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 a{

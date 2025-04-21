@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/assets/css/footer.css">
-<footer>
+<footer id="footer-section">
     <div class="footer-container">
         <!-- Section Contact -->
         <div class="contact-info footer-part">
