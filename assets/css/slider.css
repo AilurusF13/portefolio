@@ -3,7 +3,7 @@
 
 
 .slider-container{
-    --image-size: 250-px ;
+    --image-size: 250px ;
 
     display: flex;
     position: relative;

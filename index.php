@@ -3,7 +3,7 @@ $myName = "Ailurus" ;
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,9 @@ include_once "assets/php/header.php"; /*Head bar*/
 </section>
 
 <section id="more-section">
-
+    <?php
+        include_once "assets/php/more-section.php";
+    ?>
 </section>
 
 <?php

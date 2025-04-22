@@ -2,7 +2,7 @@
 <header class="header no-select">
     <div>
         <a href="/portefolio/index.php" class="logo">
-            <img src="/assets/images/logo.svg" alt="Acceuil" class="logo">
+            <img src="/assets/images/logo.svg" alt="Acceuil" class="logo" draggable="false">
         </a>
     </div>
     <div>
@@ -23,3 +23,4 @@
         </menu>
     </div>
 </header>
+<script src="/assets/js/more-section.js"></script>

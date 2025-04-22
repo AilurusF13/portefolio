@@ -1,0 +1,150 @@
+@import url("style.css");
+
+.more-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 10% 10%;
+
+    .content-filter{
+        display: flex;
+        flex-direction: column;
+
+        .fixed{
+            position: sticky;
+            top: 0;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+
+            .search-bar{
+                background :none;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                border: solid 1px black;
+                padding: 10px;
+                border-radius: 5px;
+                label{
+                    position: absolute; /* Sort du flux visuel */
+                    width: 1px; /* Taille minimale */
+                    height: 1px;
+                    overflow: hidden;
+                    clip: rect(0 0 0 0);
+                    clip-path: inset(50%);
+                    white-space: nowrap;
+                }
+                input, input:focus{
+                    /*flex: 1;*/
+                    outline:none;
+                    border-radius: 5px;
+                    border: none;
+                }
+                #keyword-button{
+                    /*flex: 1;*/
+                    height: 20px;
+                    width: auto;
+                    border: none;
+                    background-color: white;
+                    padding: 0;
+                }
+            }
+        }
+
+        .cache-button{
+            height: 20%;
+            width: auto;
+            border: none;
+        }
+    }
+
+    .project-content{
+        display: flex;
+        flex-direction: column;;
+
+        .content {
+            display: flex; /* Aligne les éléments sur une ligne */
+            align-items: center; /* Centre verticalement */
+            justify-content: space-between; /* Texte à gauche, image à droite */
+            padding: 15px;
+            background-color: var(--tertiary); /* Fond discret */
+            border-radius: 8px; /* Coins légèrement arrondis */
+            gap: 30px; /* Espacement entre le texte et l’image */
+            width: 100%;
+
+            box-sizing: border-box;
+        }
+
+        .content h3, .content p {
+            order: 3;
+            flex: 1; /* Le texte prend tout l’espace disponible */
+            color: #333; /* Couleur sobre */
+        }
+
+        .content svg {
+            order: 1;
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0; /* Empêche le SVG de rétrécir */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .content h3 {
+            order: 2;
+            font-size: 1rem; /* Taille réduite */
+            font-weight: normal; /* Moins d'impact visuel */
+            margin: 0; /* Supprime les marges inutiles */
+            flex: 0.2; /* Prend moins d’espace */
+        }
+        .content p {
+            margin: 0;
+        }
+
+    }
+}
+
+.hidden {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+.visible {
+    max-height: 60vh;
+    overflow: scroll;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.cache-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--primary);
+    color: white;
+    border-radius: 10px;
+    width: 50%;
+    margin: 5%;
+    border: none;
+    img{
+        transition: filter 0.3s ease-in-out;
+        height: 100%;
+        filter: invert(1);
+    }
+}
+
+.cache-button:hover, .cache-button:active{
+    background-color: white;
+    color: var(--primary);
+    cursor: pointer;
+    img{
+        filter: invert(0) ;
+        transition: filter 0.3s ease-in-out;
+    }
+}
