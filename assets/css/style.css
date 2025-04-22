@@ -25,6 +25,64 @@ svg text {
 body{
     margin: 0;
     font-family: "Roboto Condensed", sans-serif;
+
+    #showcase-section{
+        box-sizing: border-box;
+        padding: 10% ;
+        display: flex;
+        flex-direction: column; /*version telephone*/
+        width: 100%;
+
+        .showcase{
+            box-sizing: border-box;
+            flex: 1;
+        }
+
+        .about-me{
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 1fr 1fr;
+            height: 100vh;
+            gap: 1rem;
+
+            .me{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            }
+
+            .image{
+                grid-column: 1;
+                grid-row: 1;
+            }
+            .info{
+                text-align: center;
+                grid-column: 1;
+                grid-row: 2;
+                ul{
+                    padding: 0;
+                    list-style: none;
+                    display: inline;
+                }
+            }
+            .resume{
+                text-align: center;
+                grid-column: 2;
+                grid-row: 1/3;
+            }
+        }
+        .project-slider{
+            padding-top: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.no-select{
+    user-select: none;
 }
 
 a{

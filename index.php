@@ -19,9 +19,28 @@ include_once "assets/php/header.php"; /*Head bar*/
 ?>
 
 <section id="showcase-section">
-    <aside id="about-me">
+    <div class="showcase about-me">
+        <div class="me image no-select">
+            <img src="assets/images/logo.svg" draggable="false" alt="temporary">
+        </div>
+        <div class="me resume">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eget consectetur finibus, sapien risus gravida neque, ut bibendum erat augue vel justo. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae
+        </div>
+        <div class="me info">
+            <ul>
+                <li>-Franck</li>
+                <li>-etudiant a Université de strasbuyrg</li>
+                <li>-naissance</li>
+                <li>-residence</li>
+            </ul>
+        </div>
+    </div>
+    <div class="project-slider">
+        <?php
+            include_once "assets/php/slider.php";
+        ?>
 
-    </aside>
+    </div>
 
 </section>
 

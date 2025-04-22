@@ -1,0 +1,60 @@
+@import url("style.css");
+
+
+
+.slider-container{
+    --image-size: 250-px ;
+
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+
+    .slider-viewport{
+        display: flex;
+        height: 100%;
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+
+        .slider-item {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center; /* centre horizontalement */
+            align-items: center;     /* centre verticalement */
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            img{
+                max-height: var(--image-size);
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+
+            }
+        }
+    }
+    .slider-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        padding: 0;
+        background: none;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+    .left{
+        z-index: 10;
+        left: 0;
+        height: 100%;
+    }
+    .right{
+        z-index: 10;
+        right: 0;
+        height: 100%;
+    }
+}

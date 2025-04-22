@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/assets/css/header.css">
-<header class="header">
+<header class="header no-select">
     <div>
         <a href="/portefolio/index.php" class="logo">
             <img src="/assets/images/logo.svg" alt="Acceuil" class="logo">
