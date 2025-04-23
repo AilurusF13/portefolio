@@ -9,6 +9,8 @@
     padding: 0 10% 10%;
 
     .content-filter{
+        overflow-x: hidden;
+
         display: flex;
         flex-direction: column;
 
@@ -20,7 +22,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-
+            padding-bottom: 20px;
 
             .search-bar{
                 background :none;
@@ -59,7 +61,6 @@
                 overflow-x: hidden; /* Hide horizontal scrollbar */
             }
         }
-
         .cache-button{
             height: 20%;
             width: auto;
@@ -119,7 +120,7 @@
     transition: max-height 0.5s ease-in-out;
 }
 .visible {
-    max-height: 60vh;
+    max-height: 70svh;
     overflow: scroll;
     transition: max-height 0.5s ease-in-out;
 }

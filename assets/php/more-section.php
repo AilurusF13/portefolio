@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/more-section.css">
+<link rel="stylesheet" href="/assets/css/more-section.css">
 <div class="more-container">
     <div id="more-sec" class="content-filter cache show-sec hidden">
         <div class="fixed">

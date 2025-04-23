@@ -8,7 +8,7 @@
     <div>
         <menu>
             <li><!--suppress HtmlUnknownAnchorTarget -->
-                <a href="#more-section">Projets</a></li>
+                <a class="more-link" href="#more-section">Projets</a></li>
             <li><!--suppress HtmlUnknownAnchorTarget -->
                 <a href="#footer-section">Contact</a></li>
             <li>
@@ -23,4 +23,4 @@
         </menu>
     </div>
 </header>
-<script src="/assets/js/more-section.js"></script>
+<script src="/assets/js/refLink.js"></script>
