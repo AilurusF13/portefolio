@@ -51,7 +51,7 @@
             }
 
             form {
-
+                margin: 0;
                 select {
                     background-color: var(--background);
                     color: var(--text-action);
