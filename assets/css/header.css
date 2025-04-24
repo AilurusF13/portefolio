@@ -41,7 +41,7 @@
         align-items: center;
         justify-content: space-evenly;
 
-        li{
+        li {
             a{
                 text-decoration: none;
                 color: var(--text-action) ;

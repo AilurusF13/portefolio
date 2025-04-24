@@ -10,7 +10,7 @@
                 </button>
             </form>
             <button id="filter-button" class="cache-button more-filter">
-                Show filters
+                <?= $t["projet"]["filterbutton"] ?>
                 <img class="rotate90" src="assets/images/arrow.svg" alt="Develop filter" draggable="false">
             </button>
             <div id="filter-sec" class="cache more-filter hidden">
@@ -81,7 +81,7 @@
     </div>
     <button id="more-button" class="cache-button more-filter">
         <img class="rotate270" src="assets/images/arrow.svg" alt="develop see-more" draggable="false">
-        See more projects
+        <?= $t["projet"]["morebutton"]?>
     </button>
 </div>
 <script src="assets/js/displayButtons.js" ></script>

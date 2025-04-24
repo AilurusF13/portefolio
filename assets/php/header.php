@@ -8,15 +8,18 @@
     <div>
         <menu>
             <li><!--suppress HtmlUnknownAnchorTarget -->
-                <a class="more-link" href="#more-section">Projets</a></li>
+                <a class="more-link" href="#more-section"><?= $t["header"]["projet"] ?></a></li>
             <li><!--suppress HtmlUnknownAnchorTarget -->
-                <a href="#footer-section">Contact</a></li>
+                <a href="#footer-section"><?= $t["header"]["contact"] ?></a></li>
             <li>
-                <form id="select-language-post" action="/assets/php/changeLanguage.php" method="POST">
+                <form id="select-language-post" action="/lang.php" method="GET">
                     <!--suppress HtmlFormInputWithoutLabel -->
-                    <select id="select-language" name="language" onchange="this.form.submit()">
-                        <option value="fr">Français</option>
-                        <option value="en">English</option>
+                    <?php
+                    $lang = isset($_COOKIE['lang']) ? $_COOKIE['lang'] : 'fr'; // Récupère la langue stockée
+                    ?>
+                    <select id="langSelect" name="lang" onchange="this.form.submit()">
+                        <option value="fr" <?= $lang === 'fr' ? 'selected' : '' ?>>Français</option>
+                        <option value="en" <?= $lang === 'en' ? 'selected' : '' ?>>English</option>
                     </select>
                 </form>
             </li>

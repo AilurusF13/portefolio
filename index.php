@@ -1,5 +1,5 @@
 <?php
-$myName = "Ailurus" ;
+require_once "assets/locales/trad.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ $myName = "Ailurus" ;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Porte Folio</title>
-    <link rel="icon" type="image/svg" href="assets/images/logoA.svg">
+    <link rel="icon" type="image/svg" href="/assets/images/logoA.svg">
     <link rel="stylesheet" href="/assets/css/style.css">
 
 <!--    ROBVBOTO font-->
@@ -29,14 +29,14 @@ include_once "assets/php/header.php"; /*Head bar*/
             <img src="assets/images/logo.svg" draggable="false" alt="temporary">
         </div>
         <div class="me resume">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eget consectetur finibus, sapien risus gravida neque, ut bibendum erat augue vel justo. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae
+            <?= $t["me"]["resume"]?>
         </div>
         <div class="me info">
             <ul>
                 <li>-Franck</li>
-                <li>-etudiant a Université de strasbuyrg</li>
-                <li>-naissance</li>
-                <li>-residence</li>
+                <li>-<?= $t["me"]["activity"] ?></li>
+                <li>-<?= $t["me"]["age"]?></li>
+                <li>-<?= $t["me"]["location"]?></li>
             </ul>
         </div>
     </div>

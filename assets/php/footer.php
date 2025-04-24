@@ -9,18 +9,18 @@
         </div>
         <!-- Section Glossaire & Ressources -->
         <div class="glossary footer-part">
-            <h3>Glossaire & Aide</h3>
+            <h3><?= $t["footer"]["glossary"] ?></h3>
             <ul>
-                <li><a href="https://developer.mozilla.org/fr/" target="_blank">MDN Web Docs</a> – Documentation complète sur HTML/CSS/JS</li>
-                <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a> – Site d'apprentissage</li>
-                <li><p>Microsoft copilot - IA intégé de w11 et Microsoft edge </p></li>
+                <li><a href="https://developer.mozilla.org/fr/" target="_blank"><?= $t["footer"]["mdn"]["name"] ?></a> –<?= $t["footer"]["mdn"]["name"] ?></li>
+                <li><a href="https://www.w3schools.com/" target="_blank"><?= $t["footer"]["w3s"]["name"] ?></a> –<?= $t["footer"]["w3s"]["descr"] ?></li>
+                <li><p><?= $t["footer"]["copilot"]?></p></li>
             </ul>
         </div>
 
         <!-- Section Mention Légale -->
         <div class="legal footer-part">
-            <h3>Mention Légale</h3>
-            <p>&copy; 2025 Schoenfelder Franck - Portfolio étudiant, tous droits réservés.</p>
+            <h3><?= $t["footer"]["legs"]?></h3>
+            <p><?= $t["footer"]["cr"]?></p>
         </div>
     </div>
 </footer>
