@@ -22,14 +22,12 @@ class Project extends Database {
                 return $stmt->execute() ;
         }
 
-        public function listerProjets(): array {
+        public function listProject(): array {
                 $stmt = $this->db->prepare("SELECT * FROM projet");
                 if ($stmt->execute()) {
                     return $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
                 return [];  // Retourne un tableau vide en cas d'échec
             }
-            
-        
 }
 
