@@ -40,14 +40,15 @@ class Link extends Database {
         }
     }
 
-    public function fetchLink(int $pid): array {
+    public function fetchLink(int $pid, string $label): string {
         try {
-            $stmt = $this->db->prepare('SELECT * FROM plink WHERE pid = :pid');
+            $stmt = $this->db->prepare('SELECT url FROM plink WHERE pid = :pid AND label = :label');
             $stmt->bindValue(':pid', $pid, PDO::PARAM_INT);
+            $stmt->bindValue(':label', $label, PDO::PARAM_STR);
             if ($stmt->execute()) {
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $stmt->fetch(PDO::FETCH_COLUMN);
             } else {
-                return []; // Échec, tableau vide
+                return ""; // Échec, tableau vide
             }
         } catch (PDOException $e) {
             throw new Exception("Erreur lors de la récupération des liens : " . $e->getMessage());

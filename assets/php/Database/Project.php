@@ -25,9 +25,8 @@ class Project extends Database {
         public function listProject(): array {
                 $stmt = $this->db->prepare("SELECT * FROM project");
                 if ($stmt->execute()) {
-                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    return $stmt->fetchAll(PDO::FETCH_COLUMN);
                 }
                 return [];  // Retourne un tableau vide en cas d'échec
-            }
+        }
 }
-

@@ -7,7 +7,8 @@ class Database
     {
         try {
             // Configuration de l'objet PDO
-            $this->db = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . 'assets/php/Database/Tests/test_db.sqlite');
+            $this->db = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . 'assets/php/Database/Tests/test_db.sqlite'); // a changer en fonction des tests
+            // $this->db = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . 'assets/php/Database/db.sqlite'); // a changer en fonction des tests
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 

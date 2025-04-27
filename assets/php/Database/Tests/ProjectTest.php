@@ -16,11 +16,7 @@ class ProjectTest extends TestCase {
         // Vérification que le projet existe dans la liste des projets
         $projects = $this->project->listProject();
         $this->assertNotEmpty($projects, "La liste des projets est vide après création.");
-        $this->assertContains(
-            $id,
-            array_column($projects, 'id'),
-            "Le projet créé n'est pas présent dans la liste des projets."
-        );
+        $this->assertContains($id,$projects,"Le projet créé n'est pas présent dans la liste des projets.");
     }
 
     // Test de suppression d'un projet
@@ -42,7 +38,7 @@ class ProjectTest extends TestCase {
         foreach ($projects as $project) {
             $this->assertNotEquals(
                 $id,
-                $project['id'],
+                $project,
                 "Le projet supprimé est toujours présent dans la liste."
             );
         }

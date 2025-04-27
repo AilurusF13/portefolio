@@ -51,11 +51,11 @@ class Techno extends Database {
     }
 
     // Supprimer une technologie associée à un projet
-    public function delete(int $pid, string $technoName): bool {
+    public function delete(int $pid, string $name): bool {
         try {
             // Récupérer l'id de la technologie
             $stmt = $this->db->prepare('SELECT id FROM techno WHERE name = :name');
-            $stmt->bindValue(':name', $technoName, PDO::PARAM_STR);
+            $stmt->bindValue(':name', $name, PDO::PARAM_STR);
             $stmt->execute();
             $techno = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -84,7 +84,7 @@ class Techno extends Database {
             ');
             $stmt->bindValue(':pid', $pid, PDO::PARAM_INT);
             if ($stmt->execute()) {
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $stmt->fetchAll(PDO::FETCH_COLUMN);
             } else {
                 return [];
             }
@@ -93,18 +93,18 @@ class Techno extends Database {
         }
     }
 
-    // Récupérer tous les ligne techno associés à une technologie
+    // Récupérer tous les projets utilisant la technologie
     public function fetchByTechno(string $name): array {
         try {
             $stmt = $this->db->prepare('
-                SELECT pt.*
+                SELECT pt.pid
                 FROM ptechno pt
                 JOIN techno t ON t.id = pt.tid
                 WHERE t.name = :name
             ');
             $stmt->bindValue(':name', $name, PDO::PARAM_STR);
             if ($stmt->execute()) {
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $stmt->fetchAll(PDO::FETCH_COLUMN);
             } else {
                 return [];
             }
