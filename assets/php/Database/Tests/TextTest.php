@@ -37,7 +37,6 @@ class TextTest extends TestCase {
 
                 // Vérification que le texte supprimé n'est plus dans la base
                 $texts = $this->text->fetchText($projectId, "titre2", "en");
-                var_dump($texts) ;
                 $this->assertEmpty($texts);
         }
     }
