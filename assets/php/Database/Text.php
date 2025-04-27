@@ -1,65 +1,64 @@
 <?php
-require_once "Project.php" ;
+require_once "Project.php";
 
 class Text extends Database {
-        public function __construct() {
+    public function __construct() {
         parent::__construct();
 
-        $this->db->exec('CREATE TABLE IF NOT EXISTS project_text (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                projet_id INTEGER NOT NULL,
-                lang TEXT NOT NULL,
-                txt TEXT NOT NULL DEFAULT "NO CONTENT",
-                FOREIGN KEY (projet_id) REFERENCES projet(id) ON DELETE CASCADE
+        $this->db->exec('CREATE TABLE IF NOT EXISTS ptext (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            pid INTEGER NOT NULL,
+            label TEXT NOT NULL,
+            lang TEXT NOT NULL,
+            txt TEXT NOT NULL DEFAULT "NO CONTENT",
+            FOREIGN KEY (pid) REFERENCES project(id) ON DELETE CASCADE
         )');
-        }
+    }
 
-        // Créer un txt pour un projet
-        public function create(int $id, string $lang, string $txt): int {
-                try {
-                        $stmt = $this->db->prepare('
-                                INSERT INTO project_text (projet_id, lang, txt)
-                                VALUES (:projet_id, :lang, :txt)
-                        ');
-                        $stmt->bindValue(':projet_id', $id, PDO::PARAM_INT);
-                        $stmt->bindValue(':lang', $lang, PDO::PARAM_STR);
-                        $stmt->bindValue(':txt', $txt, PDO::PARAM_STR);
-                        $stmt->execute();
-                        return $this->db->lastInsertId(); // Retourne l'ID du txt créé
-                }catch(PDOException $e){
-                        echo $e->getMessage();
-                        return 0 ; // id invalide            
-                }       
+    // Créer un texte pour un projet avec un label
+    public function create(int $pid, string $label, string $lang, string $txt): int {
+        try {
+            $stmt = $this->db->prepare('
+                INSERT INTO ptext (pid, label, lang, txt)
+                VALUES (:pid, :label, :lang, :txt)
+            ');
+            $stmt->bindValue(':pid', $pid, PDO::PARAM_INT);
+            $stmt->bindValue(':label', $label, PDO::PARAM_STR);
+            $stmt->bindValue(':lang', $lang, PDO::PARAM_STR);
+            $stmt->bindValue(':txt', $txt, PDO::PARAM_STR);
+            $stmt->execute();
+            return $this->db->lastInsertId(); // Retourne l'ID du texte créé
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la création d'un texte : " . $e->getMessage());
         }
+    }
 
-        // Supprimer un txt de projet par son ID
-        public function delete(int $id): bool {
-                $stmt = $this->db->prepare('DELETE FROM project_text WHERE id = :id');
-                $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-                return $stmt->execute();
+    // Supprimer un texte de projet par son ID
+    public function delete(int $pid): bool {
+        try {
+            $stmt = $this->db->prepare('DELETE FROM ptext WHERE pid = :pid');
+            $stmt->bindValue(':pid', $pid, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la suppression d'un texte : " . $e->getMessage());
         }
+    }
 
-        // Lister les txts associés à un projet
-        public function listerTextes(int $projet_id): array {
-                $stmt = $this->db->prepare("SELECT * FROM project_text WHERE projet_id = :projet_id");
-                $stmt->bindValue(':projet_id', $projet_id, PDO::PARAM_INT);
-                $stmt->execute();
+    // Récupérer un texte par projet et langue avec le label
+    public function fetchText(int $pid, string $label, string $lang): array {
+        try {
+            $stmt = $this->db->prepare('SELECT * FROM ptext WHERE pid = :pid AND label = :label AND lang = :lang');
+            $stmt->bindValue(':pid', $pid, PDO::PARAM_INT);
+            $stmt->bindValue(':label', $label, PDO::PARAM_STR);
+            $stmt->bindValue(':lang', $lang, PDO::PARAM_STR);
+            
+            if ($stmt->execute()) {
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return []; // Échec, tableau vide
+            }
+        } catch (PDOException $e) {
+            throw new Exception("Erreur lors de la récupération d'un texte : " . $e->getMessage());
         }
-
-        public function fetchText(int $id, string $lang): array{
-                try{
-                        $stmt = $this->db->prepare('SELECT * FROM project_text WHERE project_id = :id AND lang = :lang') ;
-                        $stmt->bindValue(':id', $id, PDO::PARAM_INT) ;
-                        $stmt->bindValue(':lang', $lang, PDO::PARAM_STR) ;
-                        if ($stmt->execute()){
-                                return $stmt->fetchAll(PDO::FETCH_ASSOC) ;
-                        } else {
-                                return [] ; // ehec, array vide
-                        }
-                }catch(PDOException $e){
-                        echo $e->getMessage() ;
-                        return [] ; 
-                }
-        }
+    }
 }
