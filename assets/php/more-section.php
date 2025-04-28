@@ -2,10 +2,10 @@
 <div class="more-container">
     <div id="more-sec" class="content-filter cache show-sec hidden">
         <div class="fixed">
-            <form id="keyword-form" class="search-bar" method="get">
+            <form id="keyword-form" class="search-bar">
                 <label for="keyword">Rechercher :</label>
                 <input id="keyword" type="text" name="nom" placeholder="Example"/>
-                <button id="keyword-button" type="submit">
+                <button id="keyword-button">
                     <img src="assets/images/loupe.svg" alt="rechercher" data-src="https://www.svgrepo.com/svg/201683/loupe-search" draggable="false">
                 </button>
             </form>
