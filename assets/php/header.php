@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/assets/css/header.css">
 <header class="header no-select">
     <div>
-        <a href="/portefolio/index.php" class="logo">
+        <a href="/" class="logo">
             <img src="/assets/images/logo.svg" alt="Acceuil" class="logo" draggable="false">
         </a>
     </div>

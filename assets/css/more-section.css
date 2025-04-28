@@ -80,8 +80,8 @@
     .project-content {
         display: flex;
         flex-direction: column;
-    
         .content {
+            text-decoration: none;
             display: flex;
             flex-direction: column; /* <-- passe en colonne */
             align-items: center; /* centre horizontalement */

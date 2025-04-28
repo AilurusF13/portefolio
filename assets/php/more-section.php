@@ -13,7 +13,7 @@
                 <?= $t["projet"]["filterbutton"] ?>
                 <img class="rotate90" src="assets/images/arrow.svg" alt="Develop filter" draggable="false">
             </button>
-            <form id="filter-sec" class="cache more-filter hidden" method="post">
+            <form id="filter-sec" class="cache more-filter hidden">
                 <!-- <div class="option">
                     <label for="check-1">Option 1</label>
                     <input type="checkbox" id="check-1">
@@ -26,9 +26,9 @@
                     foreach( $tabTechno as $techno ){
                         $safeTechno = htmlspecialchars($techno) ;
                         echo "
-                            <div class=option>
-                                <label for='checkbox_{$safeTechno}'>{$techno}</label>
-                                <input type=checkbox id=checkbox_{$safeTechno}>
+                            <div class='option'>
+                                <label for='checkbox_{$safeTechno}'>{$safeTechno}</label>
+                                <input type=checkbox class='box filter' id=checkbox_{$safeTechno} value='$safeTechno'>
                             </div>
                         " ;
                     }
@@ -45,23 +45,7 @@
                 <p>Un projet qui redéfinit les interactions numériques à travers une approche immersive.</p>
             </a> -->
             <?php
-                require_once "DatabaseHandler.php" ;
-                $dbHandler = DatabaseHandler::getInstance() ;
-                // recuperer les id des projets
-                $pids = $dbHandler->project->listProject() ;
-                foreach ($pids as $pid) {
-                    $projectId = $pid['id']; // Assurez-vous que l'objet retourné contient l'ID
-                    $projectName = $dbHandler->text->fetchText($projectId, 'nom');
-                    $projectResume = $dbHandler->text->fetchText($projectId, 'resume');
-                    $projectImage = $dbHandler->link->fetchLink($projectId, 'miniature');
-                    echo "
-                        <a class='content'>
-                            <h3>{$projectName}</h3>
-                            <img src='{$projectImage}' draggable='false' alt='{$projectName}' />
-                            <p>{$projectResume}</p>
-                        </a>
-                    ";
-                }
+                // require_once "ajax-projects.php" ;
             ?>
         </div>
     </div>
@@ -71,3 +55,4 @@
     </button>
 </div>
 <script src="assets/js/displayButtons.js" ></script>
+<script src="assets/js/ajaxFilter.js" ></script>
