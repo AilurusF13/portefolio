@@ -2,7 +2,7 @@
 
 require_once "DatabaseHandler.php" ;
 $searchPattern = isset($_GET['search']) ? $_GET['search'] : ''; // Termes de recherche
-$tech = isset($_POST['filters']) ? $_POST['filters'] : []; // Filtres de technos envoyés via POST
+$tech = isset($_POST['filters']) ?? []; // Filtres de technos envoyés via POST
 
 $dbHandler = DatabaseHandler::getInstance();
 
@@ -23,11 +23,11 @@ foreach ($pids as $pid) {
         continue; // Si le nom du projet ne contient pas le motif de recherche, on le saute
     }
         $projectName = $dbHandler->text->fetchText($projectId, 'nom');
-        $projectLink =  "https://www.google.com"; //TODO mettre a jour avec le liens de la page associé au projet 
+        $projectLink =  "/projectPage.php?id=$projectId";
         $projectResume = $dbHandler->text->fetchText($projectId, 'resume');
         $projectImage = $dbHandler->link->fetchLink($projectId, 'miniature');
         echo "
-        <a class='content' href='{$projectLink}' target='_blank'>
+        <a class='content' href='{$projectLink}'>
                 <h3>{$projectName}</h3>
                 <img src='{$projectImage}' draggable='false' alt='{$projectName}' />
                 <p>{$projectResume}</p>
