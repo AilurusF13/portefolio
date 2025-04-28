@@ -28,6 +28,10 @@
                         ],
                         "image" => [
                                 [
+                                        "label" => "miniature" ,
+                                        "path" => "assets/images/projet/conduite/miniature.png"
+                                ],
+                                [
                                         "label" => "conduite-page-1" ,
                                         "langText" => [
                                                 "fr" => "Page 1",

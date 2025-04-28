@@ -77,49 +77,47 @@
         }
     }
 
-    .project-content{
+    .project-content {
         display: flex;
-        flex-direction: column;;
-
+        flex-direction: column;
+    
         .content {
-            display: flex; /* Aligne les éléments sur une ligne */
-            align-items: center; /* Centre verticalement */
-            justify-content: space-between; /* Texte à gauche, image à droite */
+            display: flex;
+            flex-direction: column; /* <-- passe en colonne */
+            align-items: center; /* centre horizontalement */
+            justify-content: center; /* centre verticalement si besoin */
             padding: 15px;
-            background-color: var(--tertiary); /* Fond discret */
-            border-radius: 8px; /* Coins légèrement arrondis */
-            gap: 30px; /* Espacement entre le texte et l’image */
+            background-color: var(--tertiary);
+            border-radius: 8px;
+            gap: 5px; /* espace entre les éléments */
             width: 100%;
-
             box-sizing: border-box;
         }
-
-        .content h3, .content p {
-            order: 3;
-            flex: 1; /* Le texte prend tout l’espace disponible */
-            color: #333; /* Couleur sobre */
-        }
-
-        .content svg {
-            order: 1;
-            width: 100px;
-            height: 100px;
-            flex-shrink: 0; /* Empêche le SVG de rétrécir */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    
         .content h3 {
-            order: 2;
-            font-size: 1rem; /* Taille réduite */
-            font-weight: normal; /* Moins d'impact visuel */
-            margin: 0; /* Supprime les marges inutiles */
-            flex: 0.2; /* Prend moins d’espace */
-        }
-        .content p {
+            order: 1;
+            font-size: 1.2rem; /* peut être légèrement agrandi */
+            font-weight: bold;
             margin: 0;
+            text-align: center;
         }
-
+    
+        .content img {
+            order: 2;
+            max-width: 200px; /* plus grand */
+            height: auto;
+            flex-shrink: 0;
+            display: block;
+            object-fit: contain; /* évite la déformation */
+        }
+    
+        .content p {
+            order: 3;
+            margin: 0;
+            color: #333;
+            text-align: center;
+            flex: 1; /* texte peut prendre l'espace restant */
+        }
     }
 }
 

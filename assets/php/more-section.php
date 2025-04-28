@@ -36,53 +36,33 @@
             </form>
         </div>
         <div id="id-project-content" class="project-content">
-            <a class="content">
+            <!-- Exemple de content  
+                <a class="content">
                 <h3>Exploration Numérique</h3>
                 <svg width="50" height="50">
                     <circle cx="25" cy="25" r="20" stroke="black" stroke-width="3" fill="none" />
                 </svg>
                 <p>Un projet qui redéfinit les interactions numériques à travers une approche immersive.</p>
-            </a>
-
-            <a class="content">
-                <h3>Vision Architecturale</h3>
-                <svg width="50" height="50">
-                    <rect x="10" y="10" width="30" height="30" stroke="black" stroke-width="3" fill="none" />
-                </svg>
-                <p>Concept futuriste qui allie esthétique et innovation pour les espaces urbains.</p>
-            </a>
-
-            <a class="content">
-                <h3>Réseau Créatif</h3>
-                <svg width="50" height="50">
-                    <polygon points="10,10 40,10 25,40" stroke="black" stroke-width="3" fill="none" />
-                </svg>
-                <p>Une plateforme où les idées se rencontrent et se transforment en projets concrets.</p>
-            </a>
-
-            <a class="content">
-                <h3>Éco-Technologie</h3>
-                <svg width="50" height="50">
-                    <path d="M10 30 Q 25 10, 40 30" stroke="black" stroke-width="3" fill="none"/>
-                </svg>
-                <p>Solutions éco-responsables pour une transition énergétique durable.</p>
-            </a>
-
-            <a class="content">
-                <h3>Art Digital</h3>
-                <svg width="50" height="50">
-                    <ellipse cx="25" cy="25" rx="20" ry="10" stroke="black" stroke-width="3" fill="none"/>
-                </svg>
-                <p>Fusion entre technologie et expression artistique pour des œuvres interactives.</p>
-            </a>
-
-            <a class="content">
-                <h3>Mobilité Intelligente</h3>
-                <svg width="50" height="50">
-                    <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="3" />
-                </svg>
-                <p>Optimisation des déplacements urbains grâce à des solutions intelligentes.</p>
-            </a>
+            </a> -->
+            <?php
+                require_once "DatabaseHandler.php" ;
+                $dbHandler = DatabaseHandler::getInstance() ;
+                // recuperer les id des projets
+                $pids = $dbHandler->project->listProject() ;
+                foreach ($pids as $pid) {
+                    $projectId = $pid['id']; // Assurez-vous que l'objet retourné contient l'ID
+                    $projectName = $dbHandler->text->fetchText($projectId, 'nom');
+                    $projectResume = $dbHandler->text->fetchText($projectId, 'resume');
+                    $projectImage = $dbHandler->link->fetchLink($projectId, 'miniature');
+                    echo "
+                        <a class='content'>
+                            <h3>{$projectName}</h3>
+                            <img src='{$projectImage}' draggable='false' alt='{$projectName}' />
+                            <p>{$projectResume}</p>
+                        </a>
+                    ";
+                }
+            ?>
         </div>
     </div>
     <button id="more-button" class="cache-button more-filter">
