@@ -59,6 +59,15 @@
             .cache.more-filter{
                 overflow-y: hidden; /* Hide vertical scrollbar */
                 overflow-x: hidden; /* Hide horizontal scrollbar */
+
+                #filter-form{
+                    .option{
+                        margin: 5px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+                }
             }
         }
         .cache-button{
@@ -152,4 +161,18 @@
         filter: invert(0) ;
         transition: filter 0.3s ease-in-out;
     }
+}
+
+input[type="checkbox"] {
+    appearance: none; /* Supprime le style par défaut */
+    width: 16px;
+    height: 16px;
+    background-color: white; /* Couleur de la case */
+    border: 1px solid var(--primary);
+    border-radius: 4px; /* Optionnel : arrondir les bords */
+}
+
+input[type="checkbox"]:checked {
+    background-color: gray; /* Couleur de l'intérieur quand c'est coché */
+    border-color: gray;
 }

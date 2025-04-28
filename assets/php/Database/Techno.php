@@ -76,13 +76,21 @@ class Techno extends Database {
     // Récupérer toutes les technologies utilisées par un projet
     public function fetchByProject(int $pid): array {
         try {
-            $stmt = $this->db->prepare('
-                SELECT t.name
-                FROM techno t
-                JOIN ptechno pt ON t.id = pt.tid
-                WHERE pt.pid = :pid
-            ');
-            $stmt->bindValue(':pid', $pid, PDO::PARAM_INT);
+            // cas ou on veut toutes les techno
+            if ($pid == 0){
+                $stmt = $this->db->prepare('
+                    SELECT name
+                    FROM techno
+                '); 
+            } else {
+                $stmt = $this->db->prepare('
+                    SELECT t.name
+                    FROM techno t
+                    JOIN ptechno pt ON t.id = pt.tid
+                    WHERE pt.pid = :pid
+                ');
+                $stmt->bindValue(':pid', $pid, PDO::PARAM_INT);
+            }
             if ($stmt->execute()) {
                 return $stmt->fetchAll(PDO::FETCH_COLUMN);
             } else {

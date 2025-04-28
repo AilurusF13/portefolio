@@ -1,6 +1,9 @@
 <?php
 require_once "assets/locales/trad.php";
-require_once "assets/php/dbFilling.php";
+require_once "assets/php/DatabaseHandler.php" ;
+require_once "assets/php/tabProjets.php" ; // importe le tableau "projets"
+$dbHandler = DatabaseHandler::getInstance() ;
+$dbHandler->fillDatabase($projets) ;
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +58,7 @@ include_once "assets/php/header.php"; /*Head bar*/
         include_once "assets/php/more-section.php";
     ?>
 </section>
-
-<?php
-include_once "assets/php/footer.php"; /*Section a proro: footer*/
-?>
+    <?php
+        include_once "assets/php/footer.php"; /*Section a proro: footer*/
+    ?>
 </body>

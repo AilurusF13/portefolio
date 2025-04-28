@@ -11,7 +11,7 @@ class Database
             // assets/php/Database/db.sqlite
             // bdd de test
             // /assets/php/Database/Tests/test_db.sqlite 
-            $chemin = $_SERVER['DOCUMENT_ROOT'] . 'assets/php/Database/db.sqlite';
+            $chemin = $_SERVER['DOCUMENT_ROOT'] . '/assets/php/Database/db.sqlite';
             if (file_exists($chemin)) {
             } else {
                 echo "Erreur : Le fichier n'existe pas à l'emplacement spécifié : $chemin";
