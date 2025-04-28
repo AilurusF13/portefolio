@@ -57,17 +57,17 @@
                 }
             }
             .cache.more-filter{
+                
                 overflow-y: hidden; /* Hide vertical scrollbar */
                 overflow-x: hidden; /* Hide horizontal scrollbar */
-
-                #filter-form{
-                    .option{
-                        margin: 5px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                    }
+                
+                .option{
+                    margin: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                 }
+                
             }
         }
         .cache-button{

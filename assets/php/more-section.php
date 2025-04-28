@@ -13,21 +13,27 @@
                 <?= $t["projet"]["filterbutton"] ?>
                 <img class="rotate90" src="assets/images/arrow.svg" alt="Develop filter" draggable="false">
             </button>
-            <div id="filter-sec" class="cache more-filter hidden">
-                <form id="filter-form" method="post">
-                    <!--                Filter options temporary-->
-                    <div class="filter-options">
-                        <div class="option">
-                            <label for="check-1">Option 1</label>
-                            <input type="checkbox" id="check-1">
-                        </div>
-                        <div class="options">
-                            <label for="check-2">Option 2</label>
-                            <input type="checkbox" id="check-2">
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <form id="filter-sec" class="cache more-filter hidden" method="post">
+                <!-- <div class="option">
+                    <label for="check-1">Option 1</label>
+                    <input type="checkbox" id="check-1">
+                </div> -->
+                <?php
+                    require_once "DatabaseHandler.php" ;
+                    $dbHandler = DatabaseHandler::getInstance() ;
+                    // recup link et creer la checkbox foreach of them
+                    $tabTechno = $dbHandler->techno->fetchByProject(0) ; // recup toutes les techno
+                    foreach( $tabTechno as $techno ){
+                        $safeTechno = htmlspecialchars($techno) ;
+                        echo "
+                            <div class=option>
+                                <label for='checkbox_{$safeTechno}'>{$techno}</label>
+                                <input type=checkbox id=checkbox_{$safeTechno}>
+                            </div>
+                        " ;
+                    }
+                ?>
+            </form>
         </div>
         <div id="id-project-content" class="project-content">
             <a class="content">
