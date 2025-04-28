@@ -1,5 +1,6 @@
 <?php
 require_once "assets/locales/trad.php";
+require_once "assets/php/dbFilling.php";
 ?>
 
 <!DOCTYPE html>

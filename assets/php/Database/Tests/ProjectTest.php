@@ -1,5 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
+use function PHPUnit\Framework\assertContains;
 require_once "assets/php/Database/Project.php";
 
 class ProjectTest extends TestCase {
@@ -15,8 +16,13 @@ class ProjectTest extends TestCase {
 
         // Vérification que le projet existe dans la liste des projets
         $projects = $this->project->listProject();
+        $label = $this->project->getLabel($id) ;
         $this->assertNotEmpty($projects, "La liste des projets est vide après création.");
-        $this->assertContains($id,$projects,"Le projet créé n'est pas présent dans la liste des projets.");
+        $array = [] ;
+        foreach($projects  as $p){
+            array_push( $array, $p["label"] );
+        }
+        assertContains($label,  $array) ;
     }
 
     // Test de suppression d'un projet
@@ -38,7 +44,7 @@ class ProjectTest extends TestCase {
         foreach ($projects as $project) {
             $this->assertNotEquals(
                 $id,
-                $project,
+                $project["id"],
                 "Le projet supprimé est toujours présent dans la liste."
             );
         }
