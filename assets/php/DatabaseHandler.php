@@ -28,7 +28,7 @@ class DatabaseHandler {
 
     // Empêcher le clonage ou l'instanciation directe
     private function __clone() {}
-    private function __wakeup() {}
+    // private function __wakeup() {} // probleme dans le serveur apache
 
     // Exemple de méthode pour insérer un projet
     public function fillDatabase(array $projets): void {
