@@ -25,6 +25,10 @@ $t = [
             "name" => "W3Schools",
             "descr" => "Front-end learning website"
         ],
+        "wireframe" => [
+            "name" => "Wireframe.cc",
+            "descr" => "Site used for the blueprint"
+        ],
         "copilot" => "Microsoft Copilot - AI integrated into Windows 11 and Microsoft Edge",
         "legs" => "Legal mentions",
         "cr" => "&copy; 2025 Schoenfelder Franck - Student portfolio, all rights reserved."

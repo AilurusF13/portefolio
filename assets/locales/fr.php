@@ -25,6 +25,10 @@ $t = [
             "name" => "W3Schools",
             "descr" => "Site d'apprentissage front end"
         ],
+        "wireframe" => [
+            "name" => "Wireframe.cc",
+            "descr" => "Site utilisé pour le plan"
+        ],
         "copilot" => "Microsoft copilot - IA intégé de w11 et Microsoft edge",
         "legs" => "Mention légales",
         "cr" => "&copy; 2025 Schoenfelder Franck - Portfolio étudiant, tous droits réservés."

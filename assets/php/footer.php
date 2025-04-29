@@ -13,6 +13,7 @@
             <ul>
                 <li><a href="https://developer.mozilla.org/fr/" target="_blank"><?= $t["footer"]["mdn"]["name"] ?></a> –<?= $t["footer"]["mdn"]["name"] ?></li>
                 <li><a href="https://www.w3schools.com/" target="_blank"><?= $t["footer"]["w3s"]["name"] ?></a> –<?= $t["footer"]["w3s"]["descr"] ?></li>
+                <li><a href="https://wireframe.cc/" target="_blank"><?= $t["footer"]["wireframe"]["name"]?></a> -<?= $t["footer"]["wireframe"]["descr"]?></li>
                 <li><p><?= $t["footer"]["copilot"]?></p></li>
             </ul>
         </div>
