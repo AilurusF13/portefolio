@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/assets/css/slider.css">
-<div class="showcase slider-container no-select">
+<section class="showcase slider-container no-select">
     <button class="slider-button left">
         <img class="rotate180" src="assets/images/arrow.svg" draggable="false" alt="previous">
     </button>
@@ -27,17 +27,17 @@
             $projectName = $dbHandler->text->fetchText($pid, 'nom');
             $projectImage = $dbHandler->link->fetchLink($pid, 'miniature');
             echo "
-                <div class='slider-item'>
+                <figure class='slider-item'>
                     <a href='{$projectLink}' >
                         <img src='{$projectImage}' alt='$projetName' draggable='false'>
                     </a>
-                </div>
+                </figure>
             " ;
         }
         ?>
     </div>
     <button class="slider-button right">
-        <img src="assets/images/arrow.svg" draggable="false" alt="left">
+        <img src="assets/images/arrow.svg" draggable="false" alt="next">
     </button>
-</div>
+</section>
 <script src="/assets/js/slider.js"></script>

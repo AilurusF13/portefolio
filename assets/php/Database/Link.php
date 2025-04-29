@@ -1,4 +1,7 @@
 <?php
+
+use PhpParser\Node\Stmt;
+use function PHPUnit\Framework\throwException;
 require_once "Database.php";
 
 class Link extends Database {
@@ -51,7 +54,21 @@ class Link extends Database {
                 return ""; // Échec, tableau vide
             }
         } catch (PDOException $e) {
-            throw new Exception("Erreur lors de la récupération des liens : " . $e->getMessage());
+            throw new Exception("Erreur lors de la récupération du lien : " . $e->getMessage());
+        }
+    }
+
+    public function fetchAllLinks(int $pid): array{
+        try{
+            $stmt = $this->db->prepare('SELECT label, url FROM plink WHERE pid = :pid') ;
+            $stmt->bindValue(':pid', $pid,  PDO::PARAM_INT) ;
+            if ($stmt->execute()){
+                return $stmt->fetchAll() ; // tableau associatif
+            } else {
+                return [] ;
+            }
+        } catch (PDOException $e){
+            throw new Exception("Erreur lors de la recuperation des labels et liens" . $e->getMessage()) ;
         }
     }
 }

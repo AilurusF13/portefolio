@@ -34,16 +34,16 @@ $projets = [
                         [
                                 "label" => "conduite-page-1" ,
                                 "langText" => [
-                                        "fr" => "Page 1",
-                                        "en" => "Page 1"
+                                        "fr" => "Page du formulaire",
+                                        "en" => "Page des sauvegardes"
                                 ],
                                 "path" => "assets/images/projet/conduite/page1.png"
                         ],
                         [
                                 "label" => "conduite-page-2" ,
                                 "langText" => [
-                                        "fr" => "Page 2",
-                                        "en" => "Page 2"
+                                        "fr" => "Form page",
+                                        "en" => "Saves page"
                                 ],
 
                                 "path" => "assets/images/projet/conduite/page2.png"
@@ -81,7 +81,7 @@ $projets = [
                                         "fr" => "Télécharger le répértoire git",
                                         "en" => "Download git repository"
                                 ],
-                                "url" => "assets/downloads/projet/sokoban.zip"
+                                "url" => "assets/downloads/projet/sokoban/sokoban.zip"
                         ],
                         [
                                 "label" => "documentation",
@@ -100,8 +100,16 @@ $projets = [
                         [
                                 "label" => "sokoban-level",
                                 "langText" => [
-                                        "fr" => "Fichiers de niveau",
-                                        "en" => "Level files"
+                                        "fr" => "En jeu",
+                                        "en" => "In game"
+                                ],
+                                "path" => "assets/images/projet/sokoban/jeu.png"
+                        ],
+                        [
+                                "label" => "sokoban-level",
+                                "langText" => [
+                                        "fr" => "Fichiers de niveaux",
+                                        "en" => "Levels files"
                                 ],
                                 "path" => "assets/images/projet/sokoban/level.png"
                         ],

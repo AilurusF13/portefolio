@@ -2,7 +2,6 @@ const sliderViewport = document.querySelector('.slider-viewport');
 const sliderItems = document.querySelectorAll('.slider-item');
 const nextButton = document.querySelector('.slider-button.right');
 const prevButton = document.querySelector('.slider-button.left');
-
 let currentIndex = 0; // Index de l'élément visible
 const totalItems = sliderItems.length; // Nombre total d'éléments dans le slider
 
@@ -19,6 +18,7 @@ function decrementCurrent(){
     currentIndex = (currentIndex - 1 + totalItems) % totalItems; // Passe au dernier élément après le premier
 }
 nextButton.addEventListener('click', () => {
+    console.log("next clicked") ;
     incrementCurrent();
     updateSlider();
 });

@@ -108,3 +108,7 @@ a{
 .rotate270{
     transform: rotate(270deg);
 }
+
+figure {
+    margin: 0;
+}

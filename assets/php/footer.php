@@ -1,3 +1,6 @@
+<?php
+require_once "assets/locales/trad.php";
+?>
 <link rel="stylesheet" href="/assets/css/footer.css">
 <footer id="footer-section">
     <div class="footer-container">
