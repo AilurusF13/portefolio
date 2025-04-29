@@ -2,8 +2,12 @@
 
 require_once "DatabaseHandler.php" ;
 $searchPattern = isset($_GET['search']) ? $_GET['search'] : ''; // Termes de recherche
-$tech = isset($_POST['filters']) ?? []; // Filtres de technos envoyés via POST
 
+// Filtres de technos envoyés via POST
+$rawData = file_get_contents("php://input");
+$data = json_decode($rawData, true);
+$tech = isset($data['filters']) ? $data['filters'] : [];
+// $tech = isset($_POST['filters']) ? $_POST['filters'] : []; 
 $dbHandler = DatabaseHandler::getInstance();
 
 // Récupérer les ID des projets
@@ -14,7 +18,8 @@ foreach ($pids as $pid) {
     $projectName = $dbHandler->text->fetchText($projectId, 'nom'); // Récupère le nom du projet
 
     // Si le tableau de techno n'est pas vide et que le projet ne contient pas les technos, on le saute
-    if ($tech != [] && array_intersect($tech, $dbHandler->techno->fetchByProject($projectId)) == 0) {
+    $ptech = $dbHandler->techno->fetchByProject($projectId) ;
+    if ($tech != [] && array_intersect($tech, $ptech) == [] ) {
         continue; // Ne pas afficher ce projet si les technos ne correspondent pas
     }
 

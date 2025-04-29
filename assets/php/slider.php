@@ -4,22 +4,37 @@
         <img class="rotate180" src="assets/images/arrow.svg" draggable="false" alt="previous">
     </button>
     <div class="slider-viewport">
-        <!-- slider content in "slider-item" class-->
-        <div class="slider-item">
-            <a href="https://www.bing.com/videos/riverview/relatedvideo?q=youtube+redpanda&cvid=26632b94d7874e89b6eb08b49bc45235&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgyNjY1ajBqOagCCLACAQ&PC=U531&ru=%2fsearch%3fq%3dyoutube%2bredpanda%26cvid%3d26632b94d7874e89b6eb08b49bc45235%26gs_lcrp%3dEgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgyNjY1ajBqOagCCLACAQ%26FORM%3dANAB01%26PC%3dU531&mmscn=vwrc&mid=9A4537D0E5F22773EBB89A4537D0E5F22773EBB8&FORM=WRVORC&ntb=1&msockid=87b403711f1c11f0848f1a869527068d" target="_blank">
-                <img src="assets/images/redpanda.webp" alt="redpanda" draggable="false">
-            </a>
-        </div>
-        <div class="slider-item">
-            <a href="https://playvalorant.com/fr-fr/" target="_blank">
-                <img src="assets/images/valorant.webp" alt="valorant" draggable="false">
-            </a>
-        </div>
-        <div class="slider-item">
+        
+        <!-- slider content in "slider-item" class Example : -->
+        <!-- <div class="slider-item">
             <a href="https://neovim.io/" target="_blank">
                 <img src="assets/images/neovim.webp" alt="nvim" draggable="false">
             </a>
-        </div>
+        </div> -->
+        <?php
+        // Generer en php le slide 
+        require_once "DatabaseHandler.php" ;
+        $dbHandler = DatabaseHandler::getInstance() ;
+        // MODS (tag des endroit modulables)
+        $plabels = [ // on peut entrer ici les labels des projet que je veux mettre en avant
+            "sokoban",
+            "carnet-conduite"
+        ] ;
+        foreach ($plabels as $plabel){
+            $pid =  $dbHandler->project->getId($plabel) ;
+            if ($pid == 0) continue ;
+            $projectLink =  "/projectPage.php?id=$pid";
+            $projectName = $dbHandler->text->fetchText($pid, 'nom');
+            $projectImage = $dbHandler->link->fetchLink($pid, 'miniature');
+            echo "
+                <div class='slider-item'>
+                    <a href='{$projectLink}' >
+                        <img src='{$projectImage}' alt='$projetName' draggable='false'>
+                    </a>
+                </div>
+            " ;
+        }
+        ?>
     </div>
     <button class="slider-button right">
         <img src="assets/images/arrow.svg" draggable="false" alt="left">

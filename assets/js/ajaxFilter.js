@@ -32,7 +32,6 @@ function getSearch(string) {
     })
     .then(response => response.text())
     .then(data => {
-        console.log("Search response: ", data);
         document.getElementById("id-project-content").innerHTML = data;
     })
     .catch(error => {

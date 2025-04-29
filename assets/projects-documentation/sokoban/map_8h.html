@@ -1,0 +1,649 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sokoban: Référence du fichier include/map.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Sokoban
+   </div>
+   <div id="projectbrief">Projet Etudiant</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('map_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle"><div class="title">Référence du fichier map.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Strucure de mise en mémoire des informations.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de map.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="map_8h__incl.png" border="0" usemap="#ainclude_2map_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="map_8h__dep__incl.png" border="0" usemap="#ainclude_2map_8hdep" alt=""/></div>
+</div>
+</div>
+<p><a href="map_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstrMap.html">strMap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure principale du projet contenant les informations d'un niveau.  <a href="structstrMap.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a3ee479371002a0a258e5c4111cc6e54f" id="r_a3ee479371002a0a258e5c4111cc6e54f"><td class="memItemLeft" align="right" valign="top"><a id="a3ee479371002a0a258e5c4111cc6e54f" name="a3ee479371002a0a258e5c4111cc6e54f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VIDE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a3ee479371002a0a258e5c4111cc6e54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef528955eee6dd36eb601189cbef370" id="r_a1ef528955eee6dd36eb601189cbef370"><td class="memItemLeft" align="right" valign="top"><a id="a1ef528955eee6dd36eb601189cbef370" name="a1ef528955eee6dd36eb601189cbef370"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CAISSE</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a1ef528955eee6dd36eb601189cbef370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a846494fb61b36a1804888a7709891bd7" id="r_a846494fb61b36a1804888a7709891bd7"><td class="memItemLeft" align="right" valign="top"><a id="a846494fb61b36a1804888a7709891bd7" name="a846494fb61b36a1804888a7709891bd7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CIBLE</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a846494fb61b36a1804888a7709891bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a528503a3fc17d7c9f3ddfb07899db5c2" id="r_a528503a3fc17d7c9f3ddfb07899db5c2"><td class="memItemLeft" align="right" valign="top"><a id="a528503a3fc17d7c9f3ddfb07899db5c2" name="a528503a3fc17d7c9f3ddfb07899db5c2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MUR</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a528503a3fc17d7c9f3ddfb07899db5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76e5d06f666d634e30f4278a747569a5" id="r_a76e5d06f666d634e30f4278a747569a5"><td class="memItemLeft" align="right" valign="top"><a id="a76e5d06f666d634e30f4278a747569a5" name="a76e5d06f666d634e30f4278a747569a5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PERSO</b>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a76e5d06f666d634e30f4278a747569a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ad7ab73c9d51262d5e22f0b622c76f634" id="r_ad7ab73c9d51262d5e22f0b622c76f634"><td class="memItemLeft" align="right" valign="top"><a id="ad7ab73c9d51262d5e22f0b622c76f634" name="ad7ab73c9d51262d5e22f0b622c76f634"></a>
+typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>Objet</b></td></tr>
+<tr class="memdesc:ad7ab73c9d51262d5e22f0b622c76f634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Objets composants les matrice de plan. <br /></td></tr>
+<tr class="separator:ad7ab73c9d51262d5e22f0b622c76f634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae23b8c641874921a0445ac004c4aa6bd" id="r_ae23b8c641874921a0445ac004c4aa6bd"><td class="memItemLeft" align="right" valign="top"><a id="ae23b8c641874921a0445ac004c4aa6bd" name="ae23b8c641874921a0445ac004c4aa6bd"></a>
+typedef <a class="el" href="map_8h.html#ad7ab73c9d51262d5e22f0b622c76f634">Objet</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>Plan</b></td></tr>
+<tr class="memdesc:ae23b8c641874921a0445ac004c4aa6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrice contenant tous les objets du niveau. Exemple de matrice 3x3 : { {0, 1, 2}, {4, 5, 6}, {7, 8, 9} } La valeur 0 est l'origine (0, 0) = 0 (1, 1) = 5 (2, 0) = 7. <br /></td></tr>
+<tr class="separator:ae23b8c641874921a0445ac004c4aa6bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5cfdf03c71a07658185bab914071a1f" id="r_ae5cfdf03c71a07658185bab914071a1f"><td class="memItemLeft" align="right" valign="top"><a id="ae5cfdf03c71a07658185bab914071a1f" name="ae5cfdf03c71a07658185bab914071a1f"></a>
+typedef struct <a class="el" href="structstrMap.html">strMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>strMap</b></td></tr>
+<tr class="memdesc:ae5cfdf03c71a07658185bab914071a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure principale du projet contenant les informations d'un niveau. <br /></td></tr>
+<tr class="separator:ae5cfdf03c71a07658185bab914071a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a343b1c34520d36b3f015e0ac99be571d" id="r_a343b1c34520d36b3f015e0ac99be571d"><td class="memItemLeft" align="right" valign="top"><a id="a343b1c34520d36b3f015e0ac99be571d" name="a343b1c34520d36b3f015e0ac99be571d"></a>
+typedef struct <a class="el" href="structstrMap.html">strMap</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Map</b></td></tr>
+<tr class="separator:a343b1c34520d36b3f015e0ac99be571d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a94a4fa59483813b5555e2a3962f08a6e" id="r_a94a4fa59483813b5555e2a3962f08a6e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstrMap.html">Map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a94a4fa59483813b5555e2a3962f08a6e">map_init</a> (<a class="el" href="structCoupleInt.html">CoupleInt</a> dimension, <a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a> reference, <a class="el" href="utils_8h.html#ace14b382cb20e1aa61ba742ed35b2683">Nat</a> nb_cible)</td></tr>
+<tr class="memdesc:a94a4fa59483813b5555e2a3962f08a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initalisation de la structure.  <br /></td></tr>
+<tr class="separator:a94a4fa59483813b5555e2a3962f08a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e02fe013d75bfba03772d62255ecb7" id="r_a78e02fe013d75bfba03772d62255ecb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstrMap.html">Map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a78e02fe013d75bfba03772d62255ecb7">map_reset</a> (<a class="el" href="structstrMap.html">Map</a> m)</td></tr>
+<tr class="memdesc:a78e02fe013d75bfba03772d62255ecb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise la structure Map.  <br /></td></tr>
+<tr class="separator:a78e02fe013d75bfba03772d62255ecb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1e3f193d09bbbb9b54dfd3a9ca68f5" id="r_a2c1e3f193d09bbbb9b54dfd3a9ca68f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#afdcfe6db5bea87bd493a3fe2c513d5ef">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a2c1e3f193d09bbbb9b54dfd3a9ca68f5">map_preMvt</a> (<a class="el" href="structstrMap.html">Map</a> m, <a class="el" href="structCoupleInt.html">CoupleInt</a> ajoute)</td></tr>
+<tr class="memdesc:a2c1e3f193d09bbbb9b54dfd3a9ca68f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au personnage d'effectuer un mouvemement à une coodonnées donnée.  <br /></td></tr>
+<tr class="separator:a2c1e3f193d09bbbb9b54dfd3a9ca68f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ceb975be840c3b3e32244315d87d577" id="r_a5ceb975be840c3b3e32244315d87d577"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#afdcfe6db5bea87bd493a3fe2c513d5ef">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a5ceb975be840c3b3e32244315d87d577">map_victoire</a> (<a class="el" href="structstrMap.html">Map</a> m)</td></tr>
+<tr class="memdesc:a5ceb975be840c3b3e32244315d87d577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine si la partie est terminée ou non.  <br /></td></tr>
+<tr class="separator:a5ceb975be840c3b3e32244315d87d577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a831d61f45411c8c3e1af783814c7ca30" id="r_a831d61f45411c8c3e1af783814c7ca30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a831d61f45411c8c3e1af783814c7ca30">plan_init</a> (<a class="el" href="structCoupleInt.html">CoupleInt</a> dim)</td></tr>
+<tr class="memdesc:a831d61f45411c8c3e1af783814c7ca30"><td class="mdescLeft">&#160;</td><td class="mdescRight">initalise un plan dans le heap  <br /></td></tr>
+<tr class="separator:a831d61f45411c8c3e1af783814c7ca30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0c7c26064506bc6cdd1352ec13aa8f9" id="r_ac0c7c26064506bc6cdd1352ec13aa8f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#ac0c7c26064506bc6cdd1352ec13aa8f9">map_getDim</a> (<a class="el" href="structstrMap.html">Map</a> m)</td></tr>
+<tr class="memdesc:ac0c7c26064506bc6cdd1352ec13aa8f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter sur les dimensions du plan de la map donnée.  <br /></td></tr>
+<tr class="separator:ac0c7c26064506bc6cdd1352ec13aa8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ba04126bf745b9c664991ed9fcfe8b" id="r_a42ba04126bf745b9c664991ed9fcfe8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a42ba04126bf745b9c664991ed9fcfe8b">map_getPlan</a> (<a class="el" href="structstrMap.html">Map</a> m)</td></tr>
+<tr class="memdesc:a42ba04126bf745b9c664991ed9fcfe8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter sur le plan de la map donnée.  <br /></td></tr>
+<tr class="separator:a42ba04126bf745b9c664991ed9fcfe8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a156044629f098046f0a8f6f7a2200bcb" id="r_a156044629f098046f0a8f6f7a2200bcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#ace14b382cb20e1aa61ba742ed35b2683">Nat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a156044629f098046f0a8f6f7a2200bcb">map_getMvt</a> (<a class="el" href="structstrMap.html">Map</a> m)</td></tr>
+<tr class="memdesc:a156044629f098046f0a8f6f7a2200bcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter sur nombre de mouvement de la map donnée.  <br /></td></tr>
+<tr class="separator:a156044629f098046f0a8f6f7a2200bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8e1d63139f22a101da6c05969d4f5b2" id="r_ad8e1d63139f22a101da6c05969d4f5b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#ace14b382cb20e1aa61ba742ed35b2683">Nat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#ad8e1d63139f22a101da6c05969d4f5b2">map_getManquant</a> (<a class="el" href="structstrMap.html">Map</a> m)</td></tr>
+<tr class="memdesc:ad8e1d63139f22a101da6c05969d4f5b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter sur le nombre de cible du plan encore présente. <br  />
+  <br /></td></tr>
+<tr class="separator:ad8e1d63139f22a101da6c05969d4f5b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad187549f85990b946ba5af27ccce44e6" id="r_ad187549f85990b946ba5af27ccce44e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="map_8h.html#ad7ab73c9d51262d5e22f0b622c76f634">Objet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#ad187549f85990b946ba5af27ccce44e6">plan_getObjet</a> (<a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a> p, <a class="el" href="structCoupleInt.html">CoupleInt</a> dim, <a class="el" href="structCoupleInt.html">Coord</a> coord)</td></tr>
+<tr class="memdesc:ad187549f85990b946ba5af27ccce44e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter sur un element du plan donné.  <br /></td></tr>
+<tr class="separator:ad187549f85990b946ba5af27ccce44e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaea228f3e1025f33e351b409a70f156c" id="r_aaea228f3e1025f33e351b409a70f156c"><td class="memItemLeft" align="right" valign="top"><a id="aaea228f3e1025f33e351b409a70f156c" name="aaea228f3e1025f33e351b409a70f156c"></a>
+<a class="el" href="utils_8h.html#afdcfe6db5bea87bd493a3fe2c513d5ef">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pre_getObjet</b> (<a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a> p, <a class="el" href="structCoupleInt.html">CoupleInt</a> dim, <a class="el" href="structCoupleInt.html">Coord</a> coord)</td></tr>
+<tr class="separator:aaea228f3e1025f33e351b409a70f156c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1777d01176764092f4fb46037a79c1ed" id="r_a1777d01176764092f4fb46037a79c1ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a1777d01176764092f4fb46037a79c1ed">coupleInt_add</a> (<a class="el" href="structCoupleInt.html">CoupleInt</a> a, <a class="el" href="structCoupleInt.html">CoupleInt</a> b)</td></tr>
+<tr class="memdesc:a1777d01176764092f4fb46037a79c1ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute les deux entiers d'un couple ou les deux coordonnés d'un couple de coordonnés.  <br /></td></tr>
+<tr class="separator:a1777d01176764092f4fb46037a79c1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacc9aa701e6ddc704d7ba699448c6eee" id="r_aacc9aa701e6ddc704d7ba699448c6eee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#aacc9aa701e6ddc704d7ba699448c6eee">plan_free</a> (<a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a> p, <a class="el" href="structCoupleInt.html">CoupleInt</a> dim)</td></tr>
+<tr class="memdesc:aacc9aa701e6ddc704d7ba699448c6eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet des libérer l'espace allouée à la matrice.  <br /></td></tr>
+<tr class="separator:aacc9aa701e6ddc704d7ba699448c6eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef2ae7b45732229565548735c661f11b" id="r_aef2ae7b45732229565548735c661f11b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#aef2ae7b45732229565548735c661f11b">map_free</a> (<a class="el" href="structstrMap.html">Map</a> m)</td></tr>
+<tr class="memdesc:aef2ae7b45732229565548735c661f11b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet des libérer l'espace allouée à la structure.  <br /></td></tr>
+<tr class="separator:aef2ae7b45732229565548735c661f11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Strucure de mise en mémoire des informations. </p>
+<p>structure contenant informations des niveaux et méthodes associées </p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a1777d01176764092f4fb46037a79c1ed" name="a1777d01176764092f4fb46037a79c1ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1777d01176764092f4fb46037a79c1ed">&#9670;&#160;</a></span>coupleInt_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCoupleInt.html">CoupleInt</a> coupleInt_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute les deux entiers d'un couple ou les deux coordonnés d'un couple de coordonnés. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un troisieme couple ou coordonnés resultant de l'addition. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a,b</td><td>Les Opérandes de l'addition, <a class="el" href="structCoupleInt.html" title="Structure permettant de représenter un couple d&#39;entier. Par défaut.">CoupleInt</a> ou Coord. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aef2ae7b45732229565548735c661f11b" name="aef2ae7b45732229565548735c661f11b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef2ae7b45732229565548735c661f11b">&#9670;&#160;</a></span>map_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void map_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet des libérer l'espace allouée à la structure. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>structure Map à libérer On liberera bien sur les element que l'on arrete d'utiliser à l'interieur. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac0c7c26064506bc6cdd1352ec13aa8f9" name="ac0c7c26064506bc6cdd1352ec13aa8f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0c7c26064506bc6cdd1352ec13aa8f9">&#9670;&#160;</a></span>map_getDim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCoupleInt.html">CoupleInt</a> map_getDim </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getter sur les dimensions du plan de la map donnée. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>un couple x, y représentant les dimensions du plan. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>Structure où seront extraites les dimensions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad8e1d63139f22a101da6c05969d4f5b2" name="ad8e1d63139f22a101da6c05969d4f5b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8e1d63139f22a101da6c05969d4f5b2">&#9670;&#160;</a></span>map_getManquant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#ace14b382cb20e1aa61ba742ed35b2683">Nat</a> map_getManquant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getter sur le nombre de cible du plan encore présente. <br  />
+ </p>
+<p>Nombre de cible sur le plan qui n'ont pas étés compàlétés par une caisse. </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>Structure ou sera extrait le nombre de cible manquante. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a156044629f098046f0a8f6f7a2200bcb" name="a156044629f098046f0a8f6f7a2200bcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a156044629f098046f0a8f6f7a2200bcb">&#9670;&#160;</a></span>map_getMvt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#ace14b382cb20e1aa61ba742ed35b2683">Nat</a> map_getMvt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getter sur nombre de mouvement de la map donnée. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Nombre de mouvemment effectuées depuis le debut de cette partie(manche). </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>Structure d'où sera extrait le nombre de mouvement. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a42ba04126bf745b9c664991ed9fcfe8b" name="a42ba04126bf745b9c664991ed9fcfe8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42ba04126bf745b9c664991ed9fcfe8b">&#9670;&#160;</a></span>map_getPlan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a> map_getPlan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getter sur le plan de la map donnée. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Le Plan (matrice d'Objet) de la structure donnée. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>Structure où sera extraite le plan. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a94a4fa59483813b5555e2a3962f08a6e" name="a94a4fa59483813b5555e2a3962f08a6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94a4fa59483813b5555e2a3962f08a6e">&#9670;&#160;</a></span>map_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structstrMap.html">Map</a> map_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td>
+          <td class="paramname"><em>dimension</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a>&#160;</td>
+          <td class="paramname"><em>reference</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#ace14b382cb20e1aa61ba742ed35b2683">Nat</a>&#160;</td>
+          <td class="paramname"><em>nb_cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initalisation de la structure. </p>
+<dl class="section pre"><dt>Précondition</dt><dd>Plan non null </dd>
+<dd>
+dimension(x, y) = (x&gt;3 et y&gt;5) ou (x&gt;5 et y&gt;3) </dd>
+<dd>
+reference avec i, j coordonnées = (i, 0) = MUR et (0, j) = MUR =&gt; toutes les bordures sont des murs </dd>
+<dd>
+nb_cible = nb_cible &gt; 0 </dd>
+<dd>
+nb_cible = nombre de CIBLE dans le niveau </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur Caché Map ou StrMap* </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dimension</td><td>Dimensions du Plan (matrice d'Objet) dans un couple (x, y). </td></tr>
+    <tr><td class="paramname">reference</td><td>Matrice represantant chaque objet du niveau avec le type Objet, rien de spécial. </td></tr>
+    <tr><td class="paramname">nb_cible</td><td>Nombre de cible présente dans le niveau, les places sur lequels le joeur doit poser des caisses. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2c1e3f193d09bbbb9b54dfd3a9ca68f5" name="a2c1e3f193d09bbbb9b54dfd3a9ca68f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c1e3f193d09bbbb9b54dfd3a9ca68f5">&#9670;&#160;</a></span>map_preMvt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#afdcfe6db5bea87bd493a3fe2c513d5ef">Bool</a> map_preMvt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td>
+          <td class="paramname"><em>ajoute</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au personnage d'effectuer un mouvemement à une coodonnées donnée. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Un booléen représentant le succès de l'opération de déplacement : Réussi : vrai sinon faux. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>Map ou aura lieu l'opération. </td></tr>
+    <tr><td class="paramname">ajoute</td><td>Couple représentant le mouvement du personnage (doite, gauche, haut, bas) en fonction du x et y.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>La fonction effectue le mouvement si et seulement si :</p><ul>
+<li>la nouvelle cordonnée donnée ne représente pas un mur.</li>
+<li>le deplacement est d'une unité en x ou y mais pas les deux.</li>
+<li>si la nouvelle coordonée représente une caisse, qu'il n'y ai pas de caisse ou de mur apres celui-ci. </li>
+</ul>
+
+</div>
+</div>
+<a id="a78e02fe013d75bfba03772d62255ecb7" name="a78e02fe013d75bfba03772d62255ecb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e02fe013d75bfba03772d62255ecb7">&#9670;&#160;</a></span>map_reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structstrMap.html">Map</a> map_reset </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réinitialise la structure Map. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur Caché Map ou StrMap* </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>Map à reinitialiser. Permet la réinitialisation des elements- de map pour recommencer une partie a partir du même niveau/de la même référence. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5ceb975be840c3b3e32244315d87d577" name="a5ceb975be840c3b3e32244315d87d577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ceb975be840c3b3e32244315d87d577">&#9670;&#160;</a></span>map_victoire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#afdcfe6db5bea87bd493a3fe2c513d5ef">Bool</a> map_victoire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structstrMap.html">Map</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determine si la partie est terminée ou non. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Vrai si la partie est terminée/gagnée et faux sinon. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>structure où la partie a lieu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aacc9aa701e6ddc704d7ba699448c6eee" name="aacc9aa701e6ddc704d7ba699448c6eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacc9aa701e6ddc704d7ba699448c6eee">&#9670;&#160;</a></span>plan_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void plan_free </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td>
+          <td class="paramname"><em>dim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet des libérer l'espace allouée à la matrice. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>matrice plan à libérer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad187549f85990b946ba5af27ccce44e6" name="ad187549f85990b946ba5af27ccce44e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad187549f85990b946ba5af27ccce44e6">&#9670;&#160;</a></span>plan_getObjet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="map_8h.html#ad7ab73c9d51262d5e22f0b622c76f634">Objet</a> plan_getObjet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td>
+          <td class="paramname"><em>dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">Coord</a>&#160;</td>
+          <td class="paramname"><em>coord</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getter sur un element du plan donné. </p>
+<dl class="section pre"><dt>Précondition</dt><dd>les dimensions du plan p sont superieurs ou égals aux coordonnées données. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Objet résidant aux coordonées donnés du plan. </dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Plan sur lequel l'objet sera récupérer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a831d61f45411c8c3e1af783814c7ca30" name="a831d61f45411c8c3e1af783814c7ca30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a831d61f45411c8c3e1af783814c7ca30">&#9670;&#160;</a></span>plan_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="map_8h.html#ae23b8c641874921a0445ac004c4aa6bd">Plan</a> plan_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCoupleInt.html">CoupleInt</a>&#160;</td>
+          <td class="paramname"><em>dim</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initalise un plan dans le heap </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dim</td><td>Couple portant les dimensions de la matrice qui doit-être créer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="map_8h.html">map.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

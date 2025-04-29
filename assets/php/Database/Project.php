@@ -63,4 +63,13 @@ class Project extends Database {
                 }
                 return "" ;
         }
+
+        public function getId(string $label): int {
+                $stmt = $this->db->prepare('SELECT id FROM project WHERE label = :label') ;
+                $stmt->bindValue(':label',$label, PDO::PARAM_STR) ;
+                if ($stmt->execute()){
+                        return $stmt->fetch(PDO::FETCH_COLUMN) ;
+                }
+                return 0 ;
+        }
 }
