@@ -29,7 +29,7 @@
             echo "
                 <figure class='slider-item'>
                     <a href='{$projectLink}' >
-                        <img src='{$projectImage}' alt='$projetName' draggable='false'>
+                        <img src='{$projectImage}' alt='$projectName' draggable='false'>
                     </a>
                 </figure>
             " ;
