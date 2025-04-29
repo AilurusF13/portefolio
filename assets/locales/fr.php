@@ -32,5 +32,11 @@ $t = [
         "copilot" => "Microsoft copilot - IA intégé de w11 et Microsoft edge",
         "legs" => "Mention légales",
         "cr" => "&copy; 2025 Schoenfelder Franck - Portfolio étudiant, tous droits réservés."
+    ],
+    "page-project" => [
+        "resume" => "Résumé",
+        "details" => "Détails" ,
+        "tech" => "Langage et technologies",
+        "link" => "Liens associés"
     ]
 ] ;

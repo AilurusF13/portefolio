@@ -84,3 +84,19 @@ function handleSwipe(startX, endX) {
         updateSlider();
     }
 }
+
+// test de la maximisation du slider
+
+let slidermaxi = document.querySelector(".slider-maximisable") ;
+if (slidermaxi != null){
+    document.querySelector(".slider-maximisable").addEventListener("click", (e) => {
+        e.currentTarget.classList.toggle("fullscreen-slider");
+    });
+}
+
+setInterval(() => {
+    if (slidermaxi != null && !slidermaxi.classList.contains("fullscreen-slider")){
+        incrementCurrent() ;
+        updateSlider() ;
+    }
+}, 10000); // Toutes les 10 secondes

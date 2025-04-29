@@ -32,5 +32,11 @@ $t = [
         "copilot" => "Microsoft Copilot - AI integrated into Windows 11 and Microsoft Edge",
         "legs" => "Legal mentions",
         "cr" => "&copy; 2025 Schoenfelder Franck - Student portfolio, all rights reserved."
+    ],
+    "page-project" => [
+        "resume" => "Summary",
+        "details" => "Details" ,
+        "tech" => "Language and technologies",
+        "link" => "Associated links"
     ]
 ];

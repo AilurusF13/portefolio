@@ -18,8 +18,8 @@ if ($pid == 0 || $label == ""){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $dbHandler->text->fetchText($pid, 'nom')?></title>
         <link rel="icon" type="image/svg" href="/assets/images/logoA.svg">
-        <link rel="stylesheet" href="/assets/css/style.css">
         <link rel="stylesheet" href="/assets/css/slider.css">
+        <link rel="stylesheet" href="/assets/css/project-page.css">
 
         <!--    ROBVBOTO font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,26 +37,26 @@ if ($pid == 0 || $label == ""){
                 <section class="name-sec  pelem">
                         <?php
                                 $pname = $dbHandler->text->fetchText($pid, 'nom') ;
-                                echo "<h1>{$pname}<h1>" ;
+                                echo "<h1>{$pname}</h1>" ;
                         ?>
                 </section>
-                <section class="resume-sec  pelem">
-                        <h3>Resume</h3>
+                <section class="resume-sec  pelem text-sections">
+                        <h3><?= $t["page-project"]["resume"] ?></h3>
                         <?php
                                 $presume = $dbHandler->text->fetchText($pid, 'resume') ;
                                 echo $presume ;
                         ?>
                 </section>
                 <!-- details -->
-                 <section class="details-sec  pelem">
-                        <h3>Details</h3>
+                 <section class="details-sec  pelem text-sections">
+                        <h3><?= $t["page-project"]["details"] ?></h3>
                         <?php
                                 $pdetails = $dbHandler->text->fetchText($pid, 'details') ;
                                 echo $pdetails ;
                         ?>
                  </section>
                 <!-- slider -->
-                <section class=" slider slider-sec slider-container no-select pelem">
+                <section class="slider slider-sec slider-container no-select slider-maximisable pelem">
                         <button class="slider-button left">
                                 <img class="rotate180" src="assets/images/arrow.svg" draggable="false" alt="previous">
                         </button>
@@ -92,9 +92,10 @@ if ($pid == 0 || $label == ""){
                         <button class="slider-button right">
                                 <img src="assets/images/arrow.svg" draggable="false" alt="next">
                         </button>
-                </section class="link-sec pelem">
+                </section>
+                <section class="tech-sec pelem">
                 <!-- lst techno -->
-                        <h3>Languages et technologies</h3>
+                        <h3><?= $t["page-project"]["tech"] ?></h3>
                         <?php
                                 // lister les technos dans une ul-li
                                 // 1 - recup toutes les technos
@@ -105,9 +106,10 @@ if ($pid == 0 || $label == ""){
                                 }
                                 echo "</ul> " ;
                         ?>
+                </section>
                 <!-- lst liens -->
                  <section class="link-sec pelem">
-                        <h3>Liens associés</h3>
+                        <h3><?= $t["page-project"]["link"] ?></h3>
                         <?php
                                 // on utilise la liste deja existante "otherList"
                                 // on liste a la maniere de techno sauf qu on rajoute des labels

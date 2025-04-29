@@ -1,0 +1,53 @@
+@import url("style.css");
+
+main{
+        display: flex;
+        flex-direction: column;
+        align-items: left ;
+        justify-content:space-between ;
+
+        padding: 5vh ;
+        padding-bottom: 2vh;
+         
+        .pelem{
+                margin: 10px ;
+        }
+        .text-sections{
+                text-align: justify;
+        }
+
+        .slider-sec{
+                .slider-viewport{
+                        .slider-item{
+                                display: flex;
+                                flex-direction: column;
+
+                                label{
+                                        padding-bottom: 5px;
+                                }
+                        }
+                }
+        }
+
+        .tech-sec{
+                ul {
+                        display: flex; /* Aligne les éléments en ligne */
+                        gap: 10px; /* Ajoute un espace entre chaque élément */
+                        list-style: none; /* Supprime les puces */
+                        padding: 0;
+                        align-items: center;
+                        justify-content: center;
+                }
+                li {
+                        display: inline-block; /* Assure un bon alignement */
+                }                    
+        }
+}
+
+h1{
+        margin: 5px;
+}
+h3{
+        margin: 5px;
+        margin-left: 0;
+}

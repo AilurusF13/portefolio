@@ -58,3 +58,27 @@
         height: 100%;
     }
 }
+
+.fullscreen-slider {
+    width: 100lvw; /* Prend toute la largeur de l'écran */
+    height: 100lvh; /* Ajuste la hauteur */
+    position: fixed; /* Superpose par-dessus */
+    inset: -10px;
+    z-index: 999;
+    padding: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.2); /* Fond semi-transparent */
+    backdrop-filter: blur(10px); /* Flou appliqué */
+
+    .slider-viewport{
+        .slider-item{
+            a{
+                width: 100lvw;
+                height: auto;
+                max-height: 100%;
+                object-fit: contain; /* Évite la coupure de l'image */                
+            }
+        }
+    }
+}
+

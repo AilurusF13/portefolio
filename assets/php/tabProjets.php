@@ -35,14 +35,14 @@ $projets = [
                                 "label" => "conduite-page-1" ,
                                 "langText" => [
                                         "fr" => "Page du formulaire",
-                                        "en" => "Page des sauvegardes"
+                                        "en" => "Form page"
                                 ],
                                 "path" => "assets/images/projet/conduite/page1.png"
                         ],
                         [
                                 "label" => "conduite-page-2" ,
                                 "langText" => [
-                                        "fr" => "Form page",
+                                        "fr" => "Page des sauvegardes",
                                         "en" => "Saves page"
                                 ],
 
