@@ -57,6 +57,7 @@ sliderViewport.addEventListener('mousedown', (e) => {
 });
 
 sliderViewport.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 1 ) return ; // pas de swip si on veut zoomer
     startX = e.touches[0].clientX; // Pour mobile (tactile)
     startY = e.touches[0].clientY; // Pour mobile (tactile)
     isSwiping = false;  // Réinitialise pour le démarrage d'un swipe
@@ -87,10 +88,30 @@ function handleSwipe(startX, endX) {
 
 // test de la maximisation du slider
 
-let slidermaxi = document.querySelector(".slider-maximisable") ;
-if (slidermaxi != null){
-    document.querySelector(".slider-maximisable").addEventListener("click", (e) => {
-        e.currentTarget.classList.toggle("fullscreen-slider");
+let slidermaxi = document.querySelector(".slider-maximisable");
+let maxStartX = 0;
+let maxStartY = 0;
+let maxMoved = false;
+
+if (slidermaxi != null) {
+    slidermaxi.addEventListener("mousedown", (e) => {
+        maxStartX = e.clientX;
+        maxStartY = e.clientY;
+        maxMoved = false;
+    });
+
+    slidermaxi.addEventListener("mousemove", (e) => {
+        const dx = Math.abs(e.clientX - maxStartX);
+        const dy = Math.abs(e.clientY - maxStartY);
+        if (dx > minMovement || dy > minMovement) {
+            maxMoved = true;
+        }
+    });
+
+    slidermaxi.addEventListener("mouseup", (e) => {
+        if (!maxMoved) {
+            slidermaxi.classList.toggle("fullscreen-slider");
+        }
     });
 }
 

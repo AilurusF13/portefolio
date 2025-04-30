@@ -5,7 +5,7 @@ if (!empty($_GET['lang'])) {
         $_GET['lang'],
         time() + 3600 * 24 * 365,
         '/',
-        '',
+        '.ailurus.fr',
         true,
         false
     );
