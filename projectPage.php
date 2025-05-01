@@ -18,9 +18,7 @@ if ($pid == 0 || $label == ""){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $dbHandler->text->fetchText($pid, 'nom')?></title>
         <link rel="icon" type="image/svg" href="/assets/images/logoA.svg">
-        <link rel="stylesheet" href="/assets/css/style.css">
-        <link rel="stylesheet" href="/assets/css/slider.css">
-        <link rel="stylesheet" href="/assets/css/project-page.css">
+        <link rel="stylesheet" href="/assets/css/mobile.css">
 
         <!--    ROBVBOTO font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/assets/css/header.css">
 <header class="header no-select">
     <div>
         <a href="/" class="logo">

@@ -14,7 +14,7 @@ $dbHandler->fillDatabase($projets) ;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Porte Folio</title>
     <link rel="icon" type="image/svg" href="/assets/images/logoA.svg">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/mobile.css">
 
 <!--    ROBVBOTO font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">

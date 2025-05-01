@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/assets/css/slider.css">
 <section class="showcase slider-container no-select">
     <button class="slider-button left">
         <img class="rotate180" src="assets/images/arrow.svg" draggable="false" alt="previous">
