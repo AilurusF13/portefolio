@@ -1,0 +1,120 @@
+@import "var.css";
+@import "mobile.css";
+
+@media screen and (min-width: 700px) {
+    :root{
+        --header-font-size-phone: 16px;
+        --header-size-phone: 85px;
+    }
+
+    body{
+        .background-img{
+            position: fixed;
+            inset: 0;
+            width: 100lvw;
+            height: 100lvh;
+            z-index: -1;
+
+            background-image: url("/assets/images/background.svg");
+            filter: blur(6px);
+            background-position: 10vw 5vh  ;
+            background-repeat: no-repeat;
+            background-size: cover ;
+        }
+
+        /*totalement refait pour entre adapté*/
+        #showcase-section{
+            padding-bottom: 100px;
+
+            .about-me {
+                display: flex;
+                flex-direction: column; /* Organise en colonne */
+                align-items: center; /* Centre les éléments */
+                justify-content: space-evenly; /* Espacement équilibré */
+                height: 100vh;
+                gap: 2rem; /* Évite que les sections collent */
+                padding: 2rem;
+            }
+
+            .info {
+                order: 2 ; /* Met la liste en premier */
+                font-size: 1.2rem; /* Agrandit la police */
+                /*margin-left: 5%;*/
+            }
+
+            .info ul {
+                padding: 0;
+                list-style: none;
+                text-align: center;
+                li {
+                    margin-bottom: 0.5rem;
+                    filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.2));
+                }
+            }
+
+            .image {
+                order: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.5)) contrast(0.10) brightness(0.5);
+            }
+
+            .image img {
+                max-width: 50%; /* Réduction de la taille de l’image */
+                height: auto;
+            }
+
+            .resume {
+                order: 3;
+                text-align: justify;
+                font-size: 1.3rem; /* Texte plus grand pour la lecture */
+                max-width: 800px; /* Évite que le texte soit trop large */
+                filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.2));
+            }
+
+
+            .project-slider{
+                padding-top: 50px;
+            }
+        }
+
+        .slider-container{
+            background-color: transparent;
+        }
+        .content-filter{
+            overflow-y: hidden; /* Assure la présence de la barre */
+        }
+        .content{
+            filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.1));
+        }
+
+        .fixed{
+            filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.1));
+        }
+
+        h1{
+            text-align: center;
+            filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.1));
+        }
+        .link-sec{
+            ul{
+                padding: 0;
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 3rem;
+            }
+        }
+
+        h3{
+            text-align: left; /*left ou center jsp*/
+            filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.1));
+        }
+        .pelem {
+            margin-bottom: 3rem;
+        }
+
+    }
+}

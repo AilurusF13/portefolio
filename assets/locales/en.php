@@ -12,6 +12,7 @@ $t = [
         "location" => "Living in Toulouse"
     ],
     "projet" => [
+        'ex' => "Search project",
         'morebutton' => "See more projects",
         "filterbutton" => "Show filters"
     ],

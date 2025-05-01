@@ -32,7 +32,7 @@ main{
         .tech-sec{
                 ul {
                         display: flex; /* Aligne les éléments en ligne */
-                        gap: 10px; /* Ajoute un espace entre chaque élément */
+                        gap: 2rem; /* Ajoute un espace entre chaque élément */
                         list-style: none; /* Supprime les puces */
                         padding: 0;
                         align-items: center;

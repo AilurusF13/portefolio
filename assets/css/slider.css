@@ -1,6 +1,7 @@
 @import url("var.css");
 .slider-container{
     background-color: var(--tertiary);
+    border-radius: 10px;
     display: flex;
     position: relative;
     overflow: hidden;
@@ -29,6 +30,8 @@
                 height: auto;
                 object-fit: cover;
 
+                border: solid transparent 5px;
+                border-radius: 15px;
             }
         }
     }
@@ -56,8 +59,9 @@
 }
 
 .fullscreen-slider {
-    width: 100lvw; /* Prend toute la largeur de l'écran */
-    height: 100lvh; /* Ajuste la hauteur */
+    border-radius: 0;
+    width: 100vw; /* Prend toute la largeur de l'écran */
+    height: 100vh; /* Ajuste la hauteur */
     position: fixed; /* Superpose par-dessus */
     inset: -10px;
     z-index: 999;
@@ -65,6 +69,12 @@
     margin: 0;
     background: rgba(0, 0, 0, 0.2); /* Fond semi-transparent */
     backdrop-filter: blur(10px); /* Flou appliqué */
+    /*.slider-viewport .slider-item a img{*/
+    /*    max-width: 90vw;*/
+    /*    max-height: 70vh;*/
+    /*    border: none ;*/
+    /*}*/
+
 
     .slider-viewport{
         .slider-item{
@@ -72,7 +82,17 @@
                 width: 100lvw;
                 height: auto;
                 max-height: 100%;
-                object-fit: contain; /* Évite la coupure de l'image */                
+                object-fit: contain; /* Évite la coupure de l'image */
+
+                img{
+                    max-width: 90vw;
+                    max-height: 70vh;
+                    /*border: none ;*/
+                }
+            }
+
+            label{
+                display: none;
             }
         }
     }

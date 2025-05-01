@@ -3,7 +3,7 @@
         <div class="fixed">
             <form id="keyword-form" class="search-bar">
                 <label for="keyword">Rechercher :</label>
-                <input id="keyword" type="text" name="nom" placeholder="Example"/>
+                <input id="keyword" type="text" name="nom" placeholder="<?= $t['projet']['ex'] ?>..." />
                 <button id="keyword-button">
                     <img src="assets/images/loupe.svg" alt="rechercher" data-src="https://www.svgrepo.com/svg/201683/loupe-search" draggable="false">
                 </button>

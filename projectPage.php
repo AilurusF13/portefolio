@@ -19,6 +19,7 @@ if ($pid == 0 || $label == ""){
         <title><?= $dbHandler->text->fetchText($pid, 'nom')?></title>
         <link rel="icon" type="image/svg" href="/assets/images/logoA.svg">
         <link rel="stylesheet" href="/assets/css/mobile.css">
+        <link rel="stylesheet" href="/assets/css/desktop.css">
 
         <!--    ROBVBOTO font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +28,7 @@ if ($pid == 0 || $label == ""){
 </head>
 
 <body>
+     <div class="background-img"></div>
        <?php
         include_once "assets/php/header.php" ;
        ?> 

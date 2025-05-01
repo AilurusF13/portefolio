@@ -6,7 +6,7 @@
 
     display: flex;
     align-items: center;
-    height: var(--header-size-phone);
+    min-height: var(--header-size-phone);
 
     font-size: var(--header-font-size-phone);
     font-weight: bold;

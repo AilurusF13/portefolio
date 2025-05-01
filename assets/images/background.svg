@@ -1,43 +1,33 @@
 <svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
     <rect width="100%" height="100%" fill="white"/>
     <g font-family="monospace" font-size="14" fill="rgba(0, 0, 0, 0.3)">
-        <text x="10" y="20">#include &lt;stdio.h&gt;</text>
-        <text x="10" y="40">#include &lt;stdlib.h&gt;</text>
-        <text x="10" y="60">#include &lt;fcntl.h&gt;</text>
-        <text x="10" y="80">#include &lt;unistd.h&gt;</text>
-        <text x="10" y="100">#include &lt;sys/stat.h&gt;</text>
-        <text x="10" y="120">#include &lt;dirent.h&gt;</text>
-        <text x="10" y="140">#include &lt;errno.h&gt;</text>
-        <text x="10" y="160">#include &lt;limits.h&gt;</text>
-        <text x="10" y="180">#include &lt;string.h&gt;</text>
+        <text x="10" y="20">#define CHK(op) do { if ((op) == -1) raler(#op, __LINE__); } while(0)</text>
+        <text x="10" y="40">#define BUF 1024</text>
 
-        <text x="10" y="200">#define CHK(op) do { if ((op) == -1) raler(#op, __LINE__); } while(0)</text>
-        <text x="10" y="220">#define BUF 1024</text>
+        <text x="10" y="60">void raler(const char *msg, int line) {</text>
+        <text x="30" y="80">printf("Error line: %d\\n", line);</text>
+        <text x="30" y="100">perror(msg);</text>
+        <text x="30" y="120">exit(EXIT_FAILURE);</text>
+        <text x="10" y="140">}</text>
 
-        <text x="10" y="240">void raler(const char *msg, int line) {</text>
-        <text x="30" y="260">printf("Error line: %d\n", line);</text>
-        <text x="30" y="280">perror(msg);</text>
-        <text x="30" y="300">exit(EXIT_FAILURE);</text>
-        <text x="10" y="320">}</text>
+        <text x="10" y="160">int chaine_dans_fichier(const char *pattern, const char *path) {</text>
+        <text x="30" y="180">size_t len_pattern = strlen(pattern);</text>
+        <text x="30" y="200">if (len_pattern > BUF) { printf("Buffer trop petit\\n"); exit(EXIT_FAILURE); }</text>
+        <text x="30" y="220">int fd; CHK(fd = open(path, O_RDONLY));</text>
+        <text x="30" y="240">int n; char buf[BUF];</text>
+        <text x="30" y="260">while ((n = read(fd, buf, BUF)) > 0) {</text>
+        <text x="50" y="280">if (n == BUF) CHK(lseek(fd, -len_pattern, SEEK_CUR));</text>
+        <text x="50" y="300">if (strstr(buf, pattern) != NULL) { CHK(close(fd)); return 1; }</text>
+        <text x="30" y="320">}</text>
+        <text x="30" y="340">if (n == -1) raler("lecture", __LINE__);</text>
+        <text x="30" y="360">CHK(close(fd));</text>
+        <text x="30" y="380">return 0;</text>
+        <text x="10" y="400">}</text>
 
-        <text x="10" y="340">int chaine_dans_fichier(const char *pattern, const char *path) {</text>
-        <text x="30" y="360">size_t len_pattern = strlen(pattern);</text>
-        <text x="30" y="380">if (len_pattern > BUF) { printf("Buffer trop petit\n"); exit(EXIT_FAILURE); }</text>
-        <text x="30" y="400">int fd; CHK(fd = open(path, O_RDONLY));</text>
-        <text x="30" y="420">int n; char buf[BUF];</text>
-        <text x="30" y="440">while ((n = read(fd, buf, BUF)) > 0) {</text>
-        <text x="50" y="460">if (n == BUF) CHK(lseek(fd, -len_pattern, SEEK_CUR));</text>
-        <text x="50" y="480">if (strstr(buf, pattern) != NULL) { CHK(close(fd)); return 1; }</text>
-        <text x="30" y="500">}</text>
-        <text x="30" y="520">if (n == -1) raler("lecture", __LINE__);</text>
-        <text x="30" y="540">CHK(close(fd));</text>
-        <text x="30" y="560">return 0;</text>
-        <text x="10" y="580">}</text>
-
-        <text x="10" y="600">int main(int argc, char *argv[]) {</text>
-        <text x="30" y="620">if (argc != 3) { printf("Utilisation : chercher_chaine &lt;chaîne&gt; &lt;répertoire&gt;\n"); return EXIT_FAILURE; }</text>
-        <text x="30" y="640">rec(argv[1], argv[2]);</text>
-        <text x="30" y="660">return EXIT_SUCCESS;</text>
-        <text x="10" y="680">}</text>
+        <text x="10" y="420">int main(int argc, char *argv[]) {</text>
+        <text x="30" y="440">if (argc != 3) { printf("Utilisation : chercher_chaine &lt;chaîne&gt; &lt;répertoire&gt;\\n"); return EXIT_FAILURE; }</text>
+        <text x="30" y="460">rec(argv[1], argv[2]);</text>
+        <text x="30" y="480">return EXIT_SUCCESS;</text>
+        <text x="10" y="500">}</text>
     </g>
 </svg>

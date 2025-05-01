@@ -12,6 +12,7 @@ $t = [
         "location" => "Résidant à toulouse"
     ],
     "projet" => [
+        'ex' => 'Chercher projet',
         'morebutton' => "Voir plus de projets",
         "filterbutton" => "Afficher les filtres"
     ],

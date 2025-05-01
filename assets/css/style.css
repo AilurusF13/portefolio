@@ -120,3 +120,7 @@ button {
     height: auto;
     filter: contrast(0.10) brightness(0.5);
 }
+
+*:focus{
+    outline: none;
+}

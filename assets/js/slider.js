@@ -120,4 +120,4 @@ setInterval(() => {
         incrementCurrent() ;
         updateSlider() ;
     }
-}, 10000); // Toutes les 10 secondes
+}, 15000); // Toutes les 15 secondes
