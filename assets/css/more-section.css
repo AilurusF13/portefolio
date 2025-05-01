@@ -11,6 +11,7 @@
     .content-filter{
         overflow-x: hidden;
 
+        width: 90%;
         display: flex;
         flex-direction: column;
 
@@ -180,4 +181,17 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
     background-color: gray; /* Couleur de l'intérieur quand c'est coché */
     border-color: gray;
+}
+
+.search-bar .invalid-form {
+    input{
+        color: red;
+    }
+}
+
+#id-project-content {
+    opacity: 0;
+    z-index: -1;
+    transform: translateY(0);
+    transition: opacity var(--project-transition) ease-in-out, transform var(--project-transition) ease-in-out;
 }

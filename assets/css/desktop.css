@@ -82,9 +82,25 @@
         .slider-container{
             /*background-color: transparent;*/
             padding-top: 2rem;
+            max-width: 50%;
         }
+        .slider-container.fullscreen-slider{
+            max-width: 100%;
+        }
+
+        #more-sec{
+            width: 40%;
+        }
+        .content{
+            p{
+                width: 60%;
+                font: 1.2rem "Roboto Condensed", sans-serif;
+            }
+        }
+
         .content-filter{
-            overflow-y: hidden; /* Assure la présence de la barre */
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
         .content{
             filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.1));

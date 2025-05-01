@@ -2,13 +2,19 @@
 
 require_once "DatabaseHandler.php" ;
 $searchPattern = isset($_GET['search']) ? $_GET['search'] : ''; // Termes de recherche
-
+// filter var pour empecher injections
 // Filtres de technos envoyés via POST
 $rawData = file_get_contents("php://input");
 $data = json_decode($rawData, true);
 $tech = isset($data['filters']) ? $data['filters'] : [];
 // $tech = isset($_POST['filters']) ? $_POST['filters'] : []; 
 $dbHandler = DatabaseHandler::getInstance();
+
+// avant de continuer on va vérifier que les données soient conformes dan,s l array et le texte
+$searchPattern = htmlspecialchars(substr($searchPattern, 0, 30));
+foreach ($tech as $techItem) {
+    $techItem = htmlspecialchars(substr($techItem, 0, 30)) ;
+}
 
 // Récupérer les ID des projets
 $pids = $dbHandler->project->listProject();

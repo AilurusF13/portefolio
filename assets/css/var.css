@@ -23,4 +23,6 @@
 
     /*slider*/
     --main-slider-img-size: 100% ;
+
+    --project-transition: 0.5s ;
 }

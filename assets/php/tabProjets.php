@@ -15,7 +15,7 @@ $projets = [
                                 "details" => "This driving logbook project helps manage trips linked to different vehicles using the browser's local storage (LocalStorage). It features dynamic functionalities such as adding vehicles, recording trips with customized details (date, distance, weather, traffic conditions, etc.), and displaying a complete trip summary. The interface is designed to be accessible and intuitive, with dynamic forms and real-time data updates.",
                         ],
                 ],
-                "technologies" => ["HTML", "CSS", "JavaScript"],
+                "technologies" => ["HTML/CSS", "JavaScript"],
                 "link" => [
                         [
                                 "label" => "download-project" ,
