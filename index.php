@@ -30,7 +30,7 @@ include_once "assets/php/header.php"; /*Head bar*/
 <section id="showcase-section">
     <div class="showcase about-me">
         <div class="me image no-select">
-            <img src="assets/images/logo.svg" draggable="false" alt="temporary">
+            <img src="assets/images/devmix.png" class='me-image' draggable="false" alt="temporary">
         </div>
         <div class="me resume">
             <?= $t["me"]["resume"]?>

@@ -116,7 +116,7 @@
         .content p {
             order: 3;
             margin: 0;
-            color: #333;
+            color: #333; /*police*/
             text-align: justify;
             flex: 1; /* texte peut prendre l'espace restant */
         }

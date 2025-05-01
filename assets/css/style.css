@@ -55,6 +55,7 @@ body{
                 grid-row: 2;
                 ul{
                     padding: 0;
+                    padding-right: 20px;
                     list-style: none;
                     display: inline;
                 }
@@ -112,4 +113,10 @@ button {
 
 .slider-button{
     filter: invert(1) drop-shadow(2px 2px 3px rgba(0,0,0,1))  ;
+}
+
+.me-image{
+    max-width: 120px;
+    height: auto;
+    filter: contrast(0.10) brightness(0.5);
 }

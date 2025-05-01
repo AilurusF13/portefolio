@@ -14,4 +14,13 @@
     --text-colour: var(--secondary) ;
 
     --background: var(--primary) ;
+
+
+    /*header*/
+    --header-font-size-phone: 12px ;
+    --header-size-phone:60px ;
+    --text-action-banner: white ;
+
+    /*slider*/
+    --main-slider-img-size: 100% ;
 }

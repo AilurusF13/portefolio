@@ -1,10 +1,6 @@
 @import url("var.css");
-
-
-
 .slider-container{
-    --image-size: 250px ;
-
+    background-color: var(--tertiary);
     display: flex;
     position: relative;
     overflow: hidden;
@@ -28,7 +24,7 @@
                 align-items: center;
             }
             img{
-                max-height: var(--image-size);
+                max-height: var(--main-slider-img-size);
                 width: 100%;
                 height: auto;
                 object-fit: cover;

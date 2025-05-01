@@ -2,11 +2,6 @@
 
 .header{
 
-    --header-font-size-phone: 12px ;
-    --header-size-phone:60px ;
-    --text-action: white ;
-    --text-colour: white ;
-
     background-color: var(--background);
 
     display: flex;
@@ -44,9 +39,10 @@
         li {
             a{
                 text-decoration: none;
-                color: var(--text-action) ;
+                color: var(--text-action-banner) ;
+
                 &:visited, &:active {
-                    color:var(--text-action) ;
+                    color:var(--text-action-banner) ;
                 }
             }
 
@@ -54,14 +50,14 @@
                 margin: 0;
                 select {
                     background-color: var(--background);
-                    color: var(--text-action);
+                    color: var(--text-action-banner);
                     border: 0;
                     font-size: var(--header-font-size-phone);
                     text-transform: uppercase;
                     font-weight: bold;
 
                     option {
-                        color: var(--text-action);
+                        color: var(--text-action-banner);
                         background-color: var(--background);
                         text-transform: uppercase;
                     }
