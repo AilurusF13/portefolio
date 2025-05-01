@@ -57,7 +57,10 @@ sliderViewport.addEventListener('mousedown', (e) => {
 });
 
 sliderViewport.addEventListener('touchstart', (e) => {
-    if (e.touches.length > 1 ) return ; // pas de swip si on veut zoomer
+    if (e.touches.length > 1 ) {
+        startX = null; // Pour mobile (tactile)
+        return ;
+    }
     startX = e.touches[0].clientX; // Pour mobile (tactile)
     startY = e.touches[0].clientY; // Pour mobile (tactile)
     isSwiping = false;  // Réinitialise pour le démarrage d'un swipe
@@ -69,6 +72,7 @@ sliderViewport.addEventListener('mouseup', (e) => {
 });
 
 sliderViewport.addEventListener('touchend', (e) => {
+    if (startX === null) return ;
     const endX = e.changedTouches[0].clientX;
     handleSwipe(startX, endX);
 });
