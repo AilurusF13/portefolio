@@ -1,0 +1,17 @@
+.roboto-condensed-* {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root{
+    --primary: #252228 ;
+    --secondary: black;
+    --tertiary: #f8f8f8;
+
+    --text-action: var(--primary) ;
+    --text-colour: var(--secondary) ;
+
+    --background: var(--primary) ;
+}
