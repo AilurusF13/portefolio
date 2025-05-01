@@ -5,7 +5,7 @@ const fadeTime= 500 ;
 
 // Fonction AJAX pour envoyer les filtres (POST)
 function postFilters(array) {
-    targetZone = document.getElementById("id-project-content") ;
+    let targetZone = document.getElementById("id-project-content") ;
     targetZone.style.opacity = "0" ;
     targetZone.style.transform = "translateY(-100px)";
 
@@ -42,9 +42,6 @@ function getSearch(string) {
 
     fetch(url, {
         method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
     })
     .then(response => response.text())
     .then(data => {
