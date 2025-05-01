@@ -112,8 +112,14 @@
             text-align: left; /*left ou center jsp*/
             filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.1));
         }
-        .pelem {
-            margin-bottom: 3rem;
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .pelem {
+                margin-bottom: 3rem;
+                width: 25%;
+            }
         }
 
     }
