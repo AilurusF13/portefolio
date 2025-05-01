@@ -80,7 +80,8 @@
         }
 
         .slider-container{
-            background-color: transparent;
+            /*background-color: transparent;*/
+            padding-top: 2rem;
         }
         .content-filter{
             overflow-y: hidden; /* Assure la présence de la barre */
@@ -116,7 +117,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            .pelem {
+            .pelem:not(.slider-sec) {
                 margin-bottom: 3rem;
                 width: 25%;
             }
