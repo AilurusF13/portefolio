@@ -6,10 +6,11 @@ $t = [
         "contact" => "contact"
     ],
     "me" => [
-        "resume" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eget consectetur finibus, sapien risus gravida neque, ut bibendum erat augue vel justo. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae",
-        "activity" => "Etudiant a  l'université de strasbourg",
+        // "resume" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eget consectetur finibus, sapien risus gravida neque, ut bibendum erat augue vel justo. Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae",
+        "resume" => "Ce site est mon porte-folio. Chacun de mes projets personnel, éducatif et professionnel sera mentionée ici. Ce site est lui même proposé par lUE de programmation web et est un projet à, part entière hébergé par mes soins.",
+        "activity" => "Étudiant a  l'université de strasbourg",
         "age" => "20 ans",
-        "location" => "Résidant à toulouse"
+        "location" => "Toulouse"
     ],
     "projet" => [
         'ex' => 'Chercher projet',

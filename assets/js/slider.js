@@ -113,7 +113,8 @@ if (slidermaxi != null) {
     });
 
     slidermaxi.addEventListener("mouseup", (e) => {
-        if (!maxMoved) {
+        // on veut eviter le toggle si  le user veut swipe
+        if (!maxMoved && !isSwiping) {
             slidermaxi.classList.toggle("fullscreen-slider");
         }
     });

@@ -35,7 +35,7 @@
             </form>
         </div>
         <div id="id-project-content" class="project-content">
-            <!-- Exemple de content  
+            <!-- Exemple de content
                 <a class="content">
                 <h3>Exploration Numérique</h3>
                 <svg width="50" height="50">
