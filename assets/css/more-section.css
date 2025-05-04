@@ -16,6 +16,7 @@
         flex-direction: column;
 
         .fixed{
+            z-index: 1; /*passer par dessus les content*/
             position: sticky;
             top: 0;
             background-color: var(--tertiary);
@@ -190,8 +191,7 @@ input[type="checkbox"]:checked {
 }
 
 #id-project-content {
-    opacity: 0;
-    z-index: -1;
+    opacity: 0 ;
     transform: translateY(0);
     transition: opacity var(--project-transition) ease-in-out, transform var(--project-transition) ease-in-out;
 }
