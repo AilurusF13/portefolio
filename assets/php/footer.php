@@ -6,7 +6,9 @@ require_once "assets/locales/trad.php";
         <!-- Section Contact -->
         <div class="contact-info footer-part">
             <h3>Contact</h3>
-            <p>Email : <a href="mailto:franck.redhood@gmail.com">franck.redhood@gmail.com</a></p>
+            <p>Email : <a href="mailto:&#102;&#114;&#97;&#110;&#99;&#107;&#46;&#114;&#101;&#100;&#104;&#111;&#111;&#100;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
+    &#102;&#114;&#97;&#110;&#99;&#107; [at] gmail [dot] com
+</a></p>
             <p>GitHub :<a href="https://github.com/fschoenfelder113" target="_blank">github.com/fschoenfelder113</a></p>
         </div>
         <!-- Section Glossaire & Ressources -->
