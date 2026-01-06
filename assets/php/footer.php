@@ -6,10 +6,12 @@ require_once "assets/locales/trad.php";
         <!-- Section Contact -->
         <div class="contact-info footer-part">
             <h3>Contact</h3>
-            <p>Email : <a href="mailto:&#102;&#114;&#97;&#110;&#99;&#107;&#46;&#114;&#101;&#100;&#104;&#111;&#111;&#100;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
-    &#102;&#114;&#97;&#110;&#99;&#107; [at] gmail [dot] com
-</a></p>
-            <p>GitHub :<a href="https://github.com/fschoenfelder113" target="_blank">github.com/fschoenfelder113</a></p>
+            <p> 
+                <a href="#" id="mail-link" onclick="this.href='mailto:' + 'franck' + 'redhood' + '@' + 'gma' + 'il.com'">
+                    EMail
+                </a>
+            </p>
+            <p>GitHub :<a href="https://github.com/AilurusF13/" target="_blank">github.com/AilurusF13</a></p>
         </div>
         <!-- Section Glossaire & Ressources -->
         <div class="glossary footer-part">
