@@ -8,7 +8,7 @@ require_once "assets/locales/trad.php";
             <h3>Contact</h3>
             <p> 
                 <a href="#" id="mail-link" onclick="this.href='mailto:' + 'franck' + 'redhood' + '@' + 'gma' + 'il.com'">
-                    EMail
+                    email
                 </a>
             </p>
             <p>GitHub :<a href="https://github.com/AilurusF13/" target="_blank">github.com/AilurusF13</a></p>
@@ -28,6 +28,11 @@ require_once "assets/locales/trad.php";
         <div class="legal footer-part">
             <h3><?= $t["footer"]["legs"]?></h3>
             <p><?= $t["footer"]["cr"]?></p>
+        </div>
+
+        <!-- Admin platforme TODO : edit style for inviible button-->
+        <div> 
+            <p><a href="admin.php">Admin Platforme</a></p>
         </div>
     </div>
 </footer>

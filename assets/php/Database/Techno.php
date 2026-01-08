@@ -120,4 +120,24 @@ class Techno extends Database {
             throw new Exception("Erreur lors de la récupération des projets pour la technologie : " . $e->getMessage());
         }
     }
+
+    // AJOUT: Créer une techno seule (pour l'admin)
+    public function add(string $name): bool {
+        try {
+            // Vérifier si elle existe déjà
+            $stmt = $this->db->prepare('SELECT id FROM techno WHERE name = :name');
+            $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+            $stmt->execute();
+            
+            if (!$stmt->fetch()) {
+                // Elle n'existe pas, on l'ajoute
+                $stmt = $this->db->prepare('INSERT INTO techno (name) VALUES (:name)');
+                $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+                return $stmt->execute();
+            }
+            return true; // Elle existait déjà, on considère ça comme un succès
+        } catch (PDOException $e) {
+            throw new Exception("Erreur ajout techno : " . $e->getMessage());
+        }
+    }
 }
