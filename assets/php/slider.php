@@ -16,8 +16,7 @@
         $dbHandler = DatabaseHandler::getInstance() ;
         // MODS (tag des endroit modulables)
         $plabels = [ // on peut entrer ici les labels des projet que je veux mettre en avant
-            "sokoban",
-            "carnet-conduite"
+            
         ] ;
         foreach ($plabels as $plabel){
             $pid =  $dbHandler->project->getId($plabel) ;
