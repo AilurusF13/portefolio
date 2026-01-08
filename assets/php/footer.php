@@ -29,10 +29,5 @@ require_once "assets/locales/trad.php";
             <h3><?= $t["footer"]["legs"]?></h3>
             <p><?= $t["footer"]["cr"]?></p>
         </div>
-
-        <!-- Admin platforme TODO : edit style for inviible button-->
-        <div> 
-            <p><a href="admin.php">Admin Platforme</a></p>
-        </div>
     </div>
 </footer>

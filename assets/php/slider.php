@@ -3,34 +3,45 @@
         <img class="rotate180" src="assets/images/arrow.svg" draggable="false" alt="previous">
     </button>
     <div class="slider-viewport">
-        
-        <!-- slider content in "slider-item" class Example : -->
-        <!-- <div class="slider-item">
-            <a href="https://neovim.io/" target="_blank">
-                <img src="assets/images/neovim.webp" alt="nvim" draggable="false">
-            </a>
-        </div> -->
         <?php
-        // Generer en php le slide 
-        require_once "DatabaseHandler.php" ;
-        $dbHandler = DatabaseHandler::getInstance() ;
-        // MODS (tag des endroit modulables)
-        $plabels = [ // on peut entrer ici les labels des projet que je veux mettre en avant
-            
-        ] ;
+        require_once "DatabaseHandler.php";
+        $dbHandler = DatabaseHandler::getInstance();
+
+        $jsonPath = $_SERVER['DOCUMENT_ROOT'] . '/assets/data/featured.json';
+        
+        if (!file_exists($jsonPath)) {
+            $jsonPath = 'assets/data/featured.json';
+        }
+
+        $plabels = [];
+
+        if (file_exists($jsonPath)) {
+            $content = file_get_contents($jsonPath);
+            $plabels = json_decode($content, true);
+            // Sécurité si le json est corrompu ou vide
+            if (!is_array($plabels)) $plabels = [];
+        }
+
         foreach ($plabels as $plabel){
-            $pid =  $dbHandler->project->getId($plabel) ;
-            if ($pid == 0) continue ;
-            $projectLink =  "/projectPage.php?id=$pid";
+            // Sécurité : on s'assure que le slug existe bien en BDD
+            $pid = $dbHandler->project->getId($plabel);
+            if ($pid == 0) continue;
+
+            $projectLink = "/projectPage.php?id=$pid";
             $projectName = $dbHandler->text->fetchText($pid, 'nom');
+            // On récupère la miniature
             $projectImage = $dbHandler->link->fetchLink($pid, 'miniature');
+            
+            // Fallback image par défaut si vide
+            if(empty($projectImage)) $projectImage = 'assets/images/default.webp';
+
             echo "
                 <figure class='slider-item'>
-                    <a href='{$projectLink}' >
+                    <a href='{$projectLink}'>
                         <img src='{$projectImage}' alt='$projectName' draggable='false'>
                     </a>
                 </figure>
-            " ;
+            ";
         }
         ?>
     </div>

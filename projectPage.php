@@ -118,7 +118,7 @@ if ($pid == 0 || $label == ""){
                                 foreach($oList as $link){
                                         echo "
                                                 <li>
-                                                        <a href='{$link['url']}' target='_blank'> {$dbHandler->text->fetchText($pid, $link['label'])}</a>
+                                                        <a href='{$link['url']}' target='_blank'> {$dbHandler->text->fetchText($pid, "link_" . $link['label'])}</a>
                                                 </li>
                                         " ;
                                 }

@@ -1,5 +1,5 @@
 <?php
-// admin.php - V20 (Fix Header Size, Color Contrast & Layout Flow)
+// admin.php - V21 (Slider JSON Manager)
 
 // 1. SECURITY
 $admin_pass = getenv('PORTEFOLIO_ADMIN_PASS');
@@ -31,7 +31,7 @@ try {
     $technoDB  = new Techno();
 } catch (Exception $e) { die("DB Error: ".$e->getMessage()); }
 
-// 3. LOAD LANGUAGES
+// 3. CONFIG & LANGS
 $availableLangs = ['fr', 'en'];
 if (is_dir('assets/locales/')) {
     $scanned = [];
@@ -43,6 +43,21 @@ if (is_dir('assets/locales/')) {
 }
 
 $msg = ""; $error = "";
+$jsonPath = 'assets/data/featured.json';
+
+// Ensure assets/data exists
+if (!is_dir('assets/data')) mkdir('assets/data', 0777, true);
+
+// Helper: Load Featured
+function getFeatured($path) {
+    if (!file_exists($path)) return [];
+    return json_decode(file_get_contents($path), true) ?? [];
+}
+
+// Helper: Save Featured
+function saveFeatured($path, $data) {
+    file_put_contents($path, json_encode(array_values($data), JSON_PRETTY_PRINT));
+}
 
 function deleteFolder($dir) {
     if (!is_dir($dir)) return;
@@ -55,17 +70,18 @@ function deleteFolder($dir) {
 
 // 4. DATA LOADING
 $editMode = false;
-$currentTexts = []; 
-$currentLinks = []; 
-$currentTechnos = []; 
-$currentImages = []; 
-$allProjects = []; 
+$currentTexts = []; $currentLinks = []; $currentTechnos = []; $currentImages = []; $allProjects = []; 
 
+// Load Projects List
 try {
     $stmt = $reader->q("SELECT id, label FROM project ORDER BY id DESC");
     if($stmt) $allProjects = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 } catch(Exception $e) {}
 
+// Load Featured List
+$featuredSlugs = getFeatured($jsonPath);
+
+// Edit Mode Logic
 if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
     $pid = (int)$_GET['edit_id'];
     if (array_key_exists($pid, $allProjects)) {
@@ -81,7 +97,6 @@ if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
                 $currentImages[$lbl] = $txt;
             } else { $currentTexts[$tag][$lang] = $txt; }
         }
-
         try {
             $rawLinks = $linkDB->fetchAllLinks($pid); 
             foreach($rawLinks as $l) {
@@ -92,7 +107,6 @@ if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
                 }
             }
         } catch(Exception $e){}
-
         try {
             $rawTechs = $technoDB->fetchByProject($pid);
             foreach($rawTechs as $tName) $currentTechnos[$tName] = true;
@@ -103,9 +117,36 @@ if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
 // 5. POST PROCESSING
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        if (isset($_POST['delete_project']) && $editMode) {
+        // --- SLIDER: ADD ---
+        if (isset($_POST['add_featured'])) {
+            $slugToAdd = $_POST['featured_slug'];
+            if (!in_array($slugToAdd, $featuredSlugs)) {
+                $featuredSlugs[] = $slugToAdd;
+                saveFeatured($jsonPath, $featuredSlugs);
+                $msg = "Project added to slider.";
+            }
+        }
+        // --- SLIDER: REMOVE ---
+        elseif (isset($_POST['remove_featured'])) {
+            $slugToRemove = $_POST['featured_slug'];
+            if (($key = array_search($slugToRemove, $featuredSlugs)) !== false) {
+                unset($featuredSlugs[$key]);
+                saveFeatured($jsonPath, $featuredSlugs);
+                $msg = "Project removed from slider.";
+            }
+        }
+
+        // --- PROJECT: DELETE ---
+        elseif (isset($_POST['delete_project']) && $editMode) {
             $pid = (int)$_POST['project_id'];
             $slugToDelete = $_POST['project_slug_hidden'];
+            
+            // Remove from Slider JSON if present
+            if (($key = array_search($slugToDelete, $featuredSlugs)) !== false) {
+                unset($featuredSlugs[$key]);
+                saveFeatured($jsonPath, $featuredSlugs);
+            }
+
             deleteFolder('assets/images/projet/' . strtolower($slugToDelete));
             $reader->exec("DELETE FROM ptext WHERE pid = $pid");
             $reader->exec("DELETE FROM plink WHERE pid = $pid");
@@ -113,6 +154,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reader->exec("DELETE FROM project WHERE id = $pid");
             header("Location: admin.php?msg=deleted"); exit;
         }
+
+        // --- TECHNO LOGIC ---
         elseif (isset($_POST['add_techno']) && !empty($_POST['tech_name'])) {
             if ($technoDB->add($_POST['tech_name'])) $msg = "Technology added.";
             else $error = "Failed to add technology.";
@@ -126,6 +169,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reader->exec("DELETE FROM ptechno WHERE tid = $tid");
             $reader->exec("DELETE FROM techno WHERE id = $tid");
         }
+
+        // --- PROJECT: SAVE ---
         elseif (isset($_POST['save_project'])) {
             $slug = trim($_POST['project_slug']);
             if (empty($slug)) throw new Exception("Slug required.");
@@ -185,11 +230,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (!empty($_POST['links'])) {
                 foreach ($_POST['links'] as $l) {
-                    if (empty($l['url']) || empty($l['label'])) continue;
-                    $linkDB->create($pid, $l['label'], $l['url']);
+                    $url = trim($l['url'] ?? '');
+                    $label = trim($l['label'] ?? '');
+
+                    // 1. Si la ligne est totalement vide, on l'ignore (c'est normal)
+                    if (empty($url) && empty($label)) continue;
+
+                    // 2. Si l'un des deux manque, on bloque tout !
+                    if (empty($label)) throw new Exception("Erreur : Le lien vers '$url' doit avoir un Label.");
+                    if (empty($url)) throw new Exception("Erreur : Le label '$label' doit avoir une URL.");
+
+                    // Si tout est bon, on insère
+                    $linkDB->create($pid, $label, $url);
                     foreach ($availableLangs as $lang) {
                         $txt = $l['text'][$lang] ?? '';
-                        if ($txt) $textDB->create($pid, "link_" . $l['label'], $lang, $txt);
+                        if ($txt) $textDB->create($pid, "link_" . $label, $lang, $txt);
                     }
                 }
             }
@@ -220,145 +275,121 @@ $technosList = array_column($allTechnos, 'name');
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/desktop.css">
     <link rel="stylesheet" href="assets/css/project-page.css">
+    <link rel="stylesheet" href="assets/css/header.css">
 
     <style>
-        /* === STYLE SPÉCIFIQUE ADMIN === */
+    /* === STYLE SPÉCIFIQUE ADMIN === */
+    main {
+        width: 100%; max-width: 1000px; margin: 0 auto;
+        display: flex; flex-direction: column; gap: 2rem; padding: 20px;
+    }
 
-        /* 1. Layout Général */
-        main {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding: 20px;
-        }
+    .admin-section {
+        background-color: var(--tertiary); color: var(--primary);
+        padding: 2rem; border-radius: 8px;
+        filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.2)); margin-bottom: 2rem;
+    }
 
-        /* 2. HEADER ADMIN (Correction Taille + Couleur) */
-        .header-admin {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-top: 20px;
-        }
+    /* Correction Flow Titres + Boutons */
+    .admin-section h2, .admin-section h3 {
+        color: var(--primary); text-transform: uppercase;
+        margin-top: 1.5rem; margin-bottom: 1rem; 
+        display: block !important; width: 100%; 
+        clear: both; /* Force le retour à la ligne après les flottants si besoin */
+    }
 
-        .header-admin h1 {
-            /* On force la couleur sombre car le fond est clair/blanc */
-            color: var(--primary) !important; 
-            /* On utilise ta variable de taille de police */
-            font-size: var(--header-size-phone); 
-            text-transform: uppercase;
-            margin-bottom: 0;
-            display: block; /* S'assure qu'il prend sa place */
-        }
-        
-        /* Ajustement taille header desktop */
-        @media screen and (min-width: 700px) {
-            .header-admin h1 {
-                font-size: 85px; /* Valeur desktop de ton var.css */
-            }
-        }
+    input, select, textarea {
+        width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px;
+        border: 1px solid #aaa; border-radius: 4px;
+        font-family: "Roboto Condensed", sans-serif;
+        background: white; color: black; box-sizing: border-box;
+    }
+    input:focus { outline: 2px solid var(--primary); }
 
-        /* 3. CARTES (Container Formulaires) */
-        .admin-section {
-            background-color: var(--tertiary); /* Blanc cassé */
-            color: var(--primary); /* Noir */
-            padding: 2rem;
-            border-radius: 8px;
-            filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.2));
-            margin-bottom: 2rem;
-        }
+    label { font-weight: bold; display: block; margin-top: 10px; }
 
-        /* 4. TITRES DE SECTION (H2, H3) */
-        /* On force display: block pour casser la ligne avant/après */
-        .admin-section h2, 
-        .admin-section h3 {
-            color: var(--primary);
-            text-transform: uppercase;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            display: block !important; /* CORRECTION DU BUG D'ALIGNEMENT */
-            width: 100%;
-        }
+    .btn {
+        padding: 10px 20px; background-color: var(--primary); color: var(--tertiary);
+        border: 1px solid var(--primary); cursor: pointer;
+        font-weight: bold; text-transform: uppercase; border-radius: 5px; transition: 0.3s;
+        display: inline-block;
+    }
+    .btn:hover { background-color: var(--tertiary); color: var(--primary); }
+    .btn-danger { background-color: #a71d2a; border-color: #a71d2a; color: white; }
+    .btn-danger:hover { background-color: white; color: #a71d2a; }
+    .btn-mini { padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; display: block; width: fit-content; }
 
-        /* 5. FORMULAIRES */
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            font-family: "Roboto Condensed", sans-serif;
-            background: white;
-            color: black;
-            box-sizing: border-box;
-        }
-        input:focus { outline: 2px solid var(--primary); }
+    .dynamic-row {
+        background: rgba(0,0,0,0.05); padding: 15px; border-radius: 5px; margin-bottom: 10px;
+        display: flex; gap: 15px; flex-wrap: wrap;
+    }
+    .col { flex: 1; min-width: 200px; }
 
-        label { font-weight: bold; display: block; margin-top: 10px; }
+    .techno-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .techno-item {
+        display: flex; align-items: center; background: white; padding: 5px 10px;
+        border: 1px solid #ccc; border-radius: 20px; cursor: pointer;
+    }
+    .techno-item input { margin: 0 5px 0 0; width: auto; }
 
-        /* 6. BOUTONS */
-        .btn {
-            padding: 10px 20px;
-            background-color: var(--primary);
-            color: var(--tertiary);
-            border: 1px solid var(--primary);
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 5px;
-            transition: 0.3s;
-            display: inline-block; /* Pour bien se caler */
-        }
-        .btn:hover { background-color: var(--tertiary); color: var(--primary); }
-        .btn-danger { background-color: #a71d2a; border-color: #a71d2a; color: white; }
-        .btn-danger:hover { background-color: white; color: #a71d2a; }
-        .btn-mini { padding: 5px 10px; font-size: 0.8rem; margin-top: 5px; }
-        
-        /* 7. ÉLÉMENTS DYNAMIQUES (Lignes d'images/liens) */
-        .dynamic-row {
-            background: rgba(0,0,0,0.05);
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .col { flex: 1; min-width: 200px; }
+    .alert { padding: 15px; margin-bottom: 20px; border-radius: 5px; font-weight: bold; text-align: center; }
+    .alert-success { background: #d4edda; color: #155724; }
+    .alert-error { background: #f8d7da; color: #721c24; }
 
-        /* Technos */
-        .techno-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .techno-item {
-            display: flex; align-items: center;
-            background: white; padding: 5px 10px;
-            border: 1px solid #ccc; border-radius: 20px;
-            cursor: pointer;
-        }
-        .techno-item input { margin: 0 5px 0 0; width: auto; }
-
-        /* Alerts */
-        .alert { padding: 15px; margin-bottom: 20px; border-radius: 5px; font-weight: bold; text-align: center; }
-        .alert-success { background: #d4edda; color: #155724; }
-        .alert-error { background: #f8d7da; color: #721c24; }
-    </style>
+    .slider-list-item {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px; border-bottom: 1px solid #ccc; font-size: 1.1rem;
+    }
+</style>
 </head>
 <body>
     
     <div class="background-img"></div>
-
     <?php if(file_exists('assets/php/header.php')) include 'assets/php/header.php'; ?>
-
-    <div class="header-admin">
-        <h1>ADMINISTRATION</h1>
-    </div>
 
     <main>
         <?php if($msg): ?><div class="alert alert-success"><?= $msg ?></div><?php endif; ?>
         <?php if($error): ?><div class="alert alert-error"><?= $error ?></div><?php endif; ?>
         <?php if(isset($_GET['msg']) && $_GET['msg']=='updated'): ?><div class="alert alert-success">Project Updated.</div><?php endif; ?>
         <?php if(isset($_GET['msg']) && $_GET['msg']=='deleted'): ?><div class="alert alert-success">Project Deleted.</div><?php endif; ?>
+
+
+        <div class="admin-section" style="border-left: 5px solid #28a745;">
+            <h2>FEATURED PROJECTS (SLIDER)</h2>
+            
+            <div style="background: white; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 20px;">
+                <?php if(empty($featuredSlugs)): ?>
+                    <div style="padding:15px; color:#888;">No projects in slider.</div>
+                <?php else: ?>
+                    <?php foreach($featuredSlugs as $fSlug): ?>
+                        <div class="slider-list-item">
+                            <span><?= htmlspecialchars($fSlug) ?></span>
+                            <form method="post" style="margin:0;">
+                                <input type="hidden" name="remove_featured" value="1">
+                                <input type="hidden" name="featured_slug" value="<?= $fSlug ?>">
+                                <button type="submit" class="btn btn-mini btn-danger">REMOVE</button>
+                            </form>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+
+            <h3>ADD TO SLIDER</h3>
+            <form method="post" style="display:flex; gap:10px; align-items:flex-end;">
+                <input type="hidden" name="add_featured" value="1">
+                <div style="flex-grow:1;">
+                    <select name="featured_slug" style="margin-bottom:0;">
+                        <?php foreach($allProjects as $pid_opt => $label_opt): ?>
+                            <?php if(!in_array($label_opt, $featuredSlugs)): ?>
+                                <option value="<?= htmlspecialchars($label_opt) ?>"><?= htmlspecialchars($label_opt) ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success">ADD</button>
+            </form>
+        </div>
+
 
         <div class="admin-section">
             <h2>TECHNOLOGIES</h2>
@@ -461,15 +492,10 @@ $technosList = array_column($allTechnos, 'name');
         function addImg(label = '', path = '') {
             let lblVal = label ? `value="${label}"` : `value="${imgCount===0 && !label ? 'miniature' : ''}"`;
             let preview = path ? `<small style="color:green; display:block;">Current: ${path}</small><input type="hidden" name="img_paths_existing[${imgCount}]" value="${path}">` : '';
-            
             let capInputs = langs.map(l => {
-                let val = '';
-                if (label && currentTexts[`img_${label}_caption`] && currentTexts[`img_${label}_caption`][l]) {
-                    val = currentTexts[`img_${label}_caption`][l];
-                }
+                let val = (label && currentTexts[`img_${label}_caption`] && currentTexts[`img_${label}_caption`][l]) ? currentTexts[`img_${label}_caption`][l] : '';
                 return `<input type="text" name="img_caption_${imgCount}_${l}" value="${val}" placeholder="Alt ${l.toUpperCase()}" style="margin-bottom:5px;">`;
             }).join('');
-
             document.getElementById('img-container').insertAdjacentHTML('beforeend', `
                 <div class="dynamic-row">
                     <div class="col"><label>Label</label><input type="text" name="img_labels[${imgCount}]" ${lblVal}>${preview}</div>
@@ -488,11 +514,21 @@ $technosList = array_column($allTechnos, 'name');
                 return `<input type="text" name="links[${linkCount}][text][${l}]" value="${val}" placeholder="Btn ${l.toUpperCase()}" style="margin-bottom:5px;">`;
             }).join('');
 
+            // Note l'ajout de "required" sur les inputs Label et URL ci-dessous
             document.getElementById('link-container').insertAdjacentHTML('beforeend', `
                 <div class="dynamic-row">
-                    <div class="col"><label>Label</label><input type="text" name="links[${linkCount}][label]" value="${label}"></div>
-                    <div class="col"><label>URL</label><input type="url" name="links[${linkCount}][url]" value="${url}"></div>
-                    <div class="col"><label>Button Text</label>${btnInputs}</div>
+                    <div class="col">
+                        <label>Label *</label>
+                        <input type="text" name="links[${linkCount}][label]" value="${label}" required placeholder="ex: github">
+                    </div>
+                    <div class="col">
+                        <label>URL *</label>
+                        <input type="url" name="links[${linkCount}][url]" value="${url}" required placeholder="https://...">
+                    </div>
+                    <div class="col">
+                        <label>Button Text</label>
+                        ${btnInputs}
+                    </div>
                 </div>`);
             linkCount++;
         }
