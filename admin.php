@@ -1,15 +1,32 @@
 <?php
-// admin.php - V21 (Slider JSON Manager)
+// admin.php - V23 (Fix Translation Warnings)
 
-// 1. SECURITY
+// 1. SECURITY & ENV
+if (file_exists(__DIR__ . '/.env')) {
+    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0 || strpos($line, '=') === false) continue; 
+        list($name, $value) = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value, " \t\n\r\0\x0B\"'"); 
+        putenv("$name=$value");
+        $_ENV[$name] = $value;
+    }
+}
+
+require_once "assets/locales/trad.php"; 
+
 $admin_pass = getenv('PORTEFOLIO_ADMIN_PASS');
-if (!$admin_pass) die("CRITICAL: PORTEFOLIO_ADMIN_PASS environment variable missing.");
+if (!$admin_pass) die("CRITICAL: PORTEFOLIO_ADMIN_PASS missing.");
 
 if (!isset($_SERVER['PHP_AUTH_PW']) || $_SERVER['PHP_AUTH_PW'] !== $admin_pass) {
     header('WWW-Authenticate: Basic realm="Portfolio Admin"');
     header('HTTP/1.0 401 Unauthorized');
     die("Access Denied.");
 }
+
+// 2. LOAD CLASSES
+// ... le reste du code (Database, Project, etc.) ...
 
 // 2. LOAD CLASSES
 require_once 'assets/php/Database/Database.php';
@@ -478,8 +495,6 @@ $technosList = array_column($allTechnos, 'name');
             </form>
         </div>
     </main>
-
-    <?php if(file_exists('assets/php/footer.php')) include 'assets/php/footer.php'; ?>
 
     <script>
         const langs = <?= json_encode($availableLangs) ?>;
