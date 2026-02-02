@@ -17,12 +17,22 @@ if (file_exists(__DIR__ . '/.env')) {
 require_once "assets/locales/trad.php"; 
 
 $admin_pass = getenv('PORTEFOLIO_ADMIN_PASS');
-if (!$admin_pass) die("CRITICAL: PORTEFOLIO_ADMIN_PASS missing.");
+if (!$admin_pass) die("Config Error");
 
-if (!isset($_SERVER['PHP_AUTH_PW']) || $_SERVER['PHP_AUTH_PW'] !== $admin_pass) {
-    header('WWW-Authenticate: Basic realm="Portfolio Admin"');
+// On récupère le mot de passe envoyé par le navigateur (s'il y en a un)
+$input_pass = $_SERVER['PHP_AUTH_PW'] ?? null;
+$input_user = $_SERVER['PHP_AUTH_USER'] ?? null;
+
+if ($input_pass !== $admin_pass && $input_user !== 'admin') {
+    // Astuce : Si le mdp est faux, on change le nom du realm (ex: "Admin (Retry)")
+    // Le navigateur va alors "oublier" l'ancien mdp et redemander la popup.
+    $realm = isset($input_pass) ? "Portfolio Admin (Retry)" : "Portfolio Admin";
+    
+    header('WWW-Authenticate: Basic realm="' . $realm . '"');
     header('HTTP/1.0 401 Unauthorized');
-    die("Access Denied.");
+    
+    // Message affiché si l'utilisateur clique sur "Annuler"
+    die("Acces denied. Please try again.");
 }
 
 // 2. LOAD CLASSES
