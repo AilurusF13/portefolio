@@ -1,8 +1,7 @@
 services:
   portfolio-site:
-    build: .
     image: portfolio-php:latest
     container_name: portfolio-site
     ports:
-      - "8080:80"
+      - "8093:80"
     restart: unless-stopped
