@@ -1,19 +1,23 @@
+# Portfolio Project
+
 # Requirements
 
-- php (v8)
+- PHP (v8)
 - php-sqlite
 
-# Adding new content :
-Edit file `assets/php/tabProjets.php`
+# Adding New Content
 
-# adding new language 
-- Edit file the tabProjet file to add the language support to each project `assets/php/tabProjets.php`
-- add the associated file's language in  `locales`
-- add the language option in `trad.php`
-- then finaly in `lang.php`
+Edit the file `assets/php/tabProjets.php`.
+
+# Adding a New Language
+
+1. Edit `assets/php/tabProjets.php` to add language support to each project.
+2. Add the associated language file in `locales`.
+3. Add the language option in `trad.php`.
+4. Finally, update `lang.php`.
 
 # Docker
 
-```docker build -t portefolio-php .```
-
-```docker run -p 8080:80 portefolio-php```
+```bash
+docker compose up -d --build
+```
