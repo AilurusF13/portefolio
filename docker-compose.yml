@@ -1,7 +1,10 @@
 services:
   portfolio-site:
-    image: portfolio-php:latest
+    build: .
     container_name: portfolio-site
     ports:
       - "8093:80"
+    volumes:
+      # Le :Z gère les labels SELinux pour /var/home/core/Portfolio
+      - .:/var/www/html:Z
     restart: unless-stopped
