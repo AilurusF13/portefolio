@@ -1,42 +1,32 @@
 <?php
-// admin.php - V23 (Fix Translation Warnings)
 
-// 1. SECURITY & ENV
-if (file_exists(__DIR__ . '/.env')) {
-    $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$envPath = __DIR__ . '/.env';
+
+if (file_exists($envPath)) {
+    $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0 || strpos($line, '=') === false) continue; 
-        list($name, $value) = explode('=', $line, 2);
-        $name = trim($name);
-        $value = trim($value, " \t\n\r\0\x0B\"'"); 
-        putenv("$name=$value");
-        $_ENV[$name] = $value;
+
+        // Ignore les commentaires       
+        if (strpos(trim($line), '#') === 0) continue;
+
+        if (strpos($line, '=') !== false) {
+            list($name, $value) = explode('=', $line, 2);
+            $name = trim($name);
+            $value = trim($value, " \t\n\r\0\x0B\"'"); // Nettoie les espaces et quotes
+
+            // On remplit les deux pour être sûr
+            putenv("$name=$value");
+            $_ENV[$name] = $value;
+        }
     }
 }
 
-require_once "assets/locales/trad.php"; 
+$admin_pass = getenv('PORTEFOLIO_ADMIN_PASS') ?: ($_ENV['PORTEFOLIO_ADMIN_PASS'] ?? null);
 
-$admin_pass = getenv('PORTEFOLIO_ADMIN_PASS');
-if (!$admin_pass) die("Config Error");
-
-// On récupère le mot de passe envoyé par le navigateur (s'il y en a un)
-$input_pass = $_SERVER['PHP_AUTH_PW'] ?? null;
-$input_user = $_SERVER['PHP_AUTH_USER'] ?? null;
-
-if ($input_pass !== $admin_pass && $input_user !== 'admin') {
-    // Astuce : Si le mdp est faux, on change le nom du realm (ex: "Admin (Retry)")
-    // Le navigateur va alors "oublier" l'ancien mdp et redemander la popup.
-    $realm = isset($input_pass) ? "Portfolio Admin (Retry)" : "Portfolio Admin";
-    
-    header('WWW-Authenticate: Basic realm="' . $realm . '"');
-    header('HTTP/1.0 401 Unauthorized');
-    
-    // Message affiché si l'utilisateur clique sur "Annuler"
-    die("Acces denied. Please try again.");
+if (!$admin_pass) {
+    header('Content-Type: text/plain');
+    die("Config Error: PORTEFOLIO_ADMIN_PASS is missing.");
 }
-
-// 2. LOAD CLASSES
-// ... le reste du code (Database, Project, etc.) ...
 
 // 2. LOAD CLASSES
 require_once 'assets/php/Database/Database.php';
@@ -372,7 +362,6 @@ $technosList = array_column($allTechnos, 'name');
 <body>
     
     <div class="background-img"></div>
-    <?php if(file_exists('assets/php/header.php')) include 'assets/php/header.php'; ?>
 
     <main>
         <?php if($msg): ?><div class="alert alert-success"><?= $msg ?></div><?php endif; ?>
