@@ -1,0 +1,7 @@
+[Build]
+# The name of the image to create
+ImageTag=portfolio:latest
+# Path to your Dockerfile
+File=...
+# The context (root folder of the project)
+Context=...

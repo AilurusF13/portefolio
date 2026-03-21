@@ -1,0 +1,22 @@
+[Unit]
+Description=Portfolio Website
+After=network-online.target
+
+[Container]
+# Use the image defined in the .build file
+Image=portfolio-site:latest
+
+# Maps port 8093 on host to 80 in container
+PublishPort=8093:80
+
+# Replicates: volumes: .:/var/www/html:Z
+# We use the absolute path to your project
+Volume=/home/franckredhood/Portfolio:/var/www/html:Z
+
+# Define the DB_PATH for your PHP code (Database.php)
+# Since you mount the volume to /var/www/html, the internal path is:
+Environment=DB_PATH=/var/www/html/assets/php/Database/db.sqlite
+
+[Service]
+# Replicates: restart: unless-stopped
+Restart=always

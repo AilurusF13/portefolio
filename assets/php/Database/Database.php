@@ -5,19 +5,12 @@ class Database
     protected PDO $db;
     public function __construct()
     {
-        try {
+        try { 
             
-            // // bdd de prod
-            // assets/php/Database/db.sqlite
-            // bdd de test
-            // /assets/php/Database/Tests/test_db.sqlite 
-            $chemin = $_SERVER['DOCUMENT_ROOT'] . '/assets/php/Database/db.sqlite';
-            if (file_exists($chemin)) {
-            } else {
-                echo "Erreur : Le fichier n'existe pas à l'emplacement spécifié : $chemin";
-            }
+            // Use DB_PATH from environment
+            $chemin = getenv('DB_PATH');
 
-            $this->db = new PDO('sqlite:' . $chemin); // a changer en fonction des tests
+            $this->db = new PDO('sqlite:' . $chemin);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
